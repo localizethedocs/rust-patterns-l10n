@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/ffi/intro.md:1
+msgid "FFI Patterns"
+msgstr ""
+
+#: src/patterns/ffi/intro.md:3
+msgid ""
+"Writing FFI code is an entire course in itself. However, there are several "
+"idioms here that can act as pointers, and avoid traps for inexperienced "
+"users of unsafe Rust."
+msgstr ""
+
+#: src/patterns/ffi/intro.md:7
+msgid ""
+"This section contains design patterns that may be useful when doing FFI."
+msgstr ""
+
+#: src/patterns/ffi/intro.md:9
+msgid ""
+"[Object-Based API](./export.md) design that has good memory safety "
+"characteristics, and a clean boundary of what is safe and what is unsafe"
+msgstr ""
+
+#: src/patterns/ffi/intro.md:12
+msgid ""
+"[Type Consolidation into Wrappers](./wrappers.md) - group multiple Rust "
+"types together into an opaque \"object\""
+msgstr ""

@@ -1,0 +1,50 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/additional_resources/index.md:1
+msgid "Additional resources"
+msgstr ""
+
+#: src/additional_resources/index.md:3
+msgid "A collection of complementary helpful content"
+msgstr ""
+
+#: src/additional_resources/index.md:5
+msgid "Talks"
+msgstr ""
+
+#: src/additional_resources/index.md:7
+msgid ""
+"[Design Patterns in Rust](https://www.youtube.com/watch?v=Pm_oO0N5B9k) by "
+"Nicholas Cameron at the PDRust (2016)"
+msgstr ""
+
+#: src/additional_resources/index.md:9
+msgid ""
+"[Writing Idiomatic Libraries in Rust](https://www.youtube.com/watch?"
+"v=0zOg8_B71gE) by Pascal Hertleif at RustFest (2017)"
+msgstr ""
+
+#: src/additional_resources/index.md:11
+msgid ""
+"[Rust Programming Techniques](https://www.youtube.com/watch?v=vqavdUGKeb4) "
+"by Nicholas Cameron at LinuxConfAu (2018)"
+msgstr ""
+
+#: src/additional_resources/index.md:14
+msgid "Books (Online)"
+msgstr ""
+
+#: src/additional_resources/index.md:16
+msgid "[The Rust API Guidelines](https://rust-lang.github.io/api-guidelines)"
+msgstr ""
