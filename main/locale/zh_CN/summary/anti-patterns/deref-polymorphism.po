@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/anti_patterns/deref.md:1
+msgid "`Deref` polymorphism"
+msgstr ""
+
+#: src/anti_patterns/deref.md:3
+msgid "Description"
+msgstr ""
+
+#: src/anti_patterns/deref.md:5
+msgid ""
+"Misuse the `Deref` trait to emulate inheritance between structs, and thus "
+"reuse methods."
+msgstr ""
+
+#: src/anti_patterns/deref.md:8
+msgid "Example"
+msgstr ""
+
+#: src/anti_patterns/deref.md:10
+msgid ""
+"Sometimes we want to emulate the following common pattern from OO languages "
+"such as Java:"
+msgstr ""
+
+#: src/anti_patterns/deref.md:26
+msgid "We can use the deref polymorphism anti-pattern to do so:"
+msgstr ""
+
+#: src/anti_patterns/deref.md:35
+msgid "//..\n"
+msgstr ""
+
+#: src/anti_patterns/deref.md:56
+msgid ""
+"There is no struct inheritance in Rust. Instead we use composition and "
+"include an instance of `Foo` in `Bar` (since the field is a value, it is "
+"stored inline, so if there were fields, they would have the same layout in "
+"memory as the Java version (probably, you should use `#[repr(C)]` if you "
+"want to be sure))."
+msgstr ""
+
+#: src/anti_patterns/deref.md:61
+msgid ""
+"In order to make the method call work we implement `Deref` for `Bar` with "
+"`Foo` as the target (returning the embedded `Foo` field). That means that "
+"when we dereference a `Bar` (for example, using `*`) then we will get a "
+"`Foo`. That is pretty weird. Dereferencing usually gives a `T` from a "
+"reference to `T`, here we have two unrelated types. However, since the dot "
+"operator does implicit dereferencing, it means that the method call will "
+"search for methods on `Foo` as well as `Bar`."
+msgstr ""
+
+#: src/anti_patterns/deref.md:69
+msgid "Advantages"
+msgstr ""
+
+#: src/anti_patterns/deref.md:71
+msgid "You save a little boilerplate, e.g.,"
+msgstr ""
+
+#: src/anti_patterns/deref.md:81
+msgid "Disadvantages"
+msgstr ""
+
+#: src/anti_patterns/deref.md:83
+msgid ""
+"Most importantly this is a surprising idiom - future programmers reading "
+"this in code will not expect this to happen. That's because we are misusing "
+"the `Deref` trait rather than using it as intended (and documented, etc.). "
+"It's also because the mechanism here is completely implicit."
+msgstr ""
+
+#: src/anti_patterns/deref.md:88
+msgid ""
+"This pattern does not introduce subtyping between `Foo` and `Bar` like "
+"inheritance in Java or C++ does. Furthermore, traits implemented by `Foo` "
+"are not automatically implemented for `Bar`, so this pattern interacts badly "
+"with bounds checking and thus generic programming."
+msgstr ""
+
+#: src/anti_patterns/deref.md:93
+msgid ""
+"Using this pattern gives subtly different semantics from most OO languages "
+"with regards to `self`. Usually it remains a reference to the sub-class, "
+"with this pattern it will be the 'class' where the method is defined."
+msgstr ""
+
+#: src/anti_patterns/deref.md:97
+msgid ""
+"Finally, this pattern only supports single inheritance, and has no notion of "
+"interfaces, class-based privacy, or other inheritance-related features. So, "
+"it gives an experience that will be subtly surprising to programmers used to "
+"Java inheritance, etc."
+msgstr ""
+
+#: src/anti_patterns/deref.md:102
+msgid "Discussion"
+msgstr ""
+
+#: src/anti_patterns/deref.md:104
+msgid ""
+"There is no one good alternative. Depending on the exact circumstances it "
+"might be better to re-implement using traits or to write out the facade "
+"methods to dispatch to `Foo` manually. We do intend to add a mechanism for "
+"inheritance similar to this to Rust, but it is likely to be some time before "
+"it reaches stable Rust. See these [blog](http://aturon.github.io/"
+"blog/2015/09/18/reuse/) [posts](http://smallcultfollowing.com/babysteps/"
+"blog/2015/10/08/virtual-structs-part-4-extended-enums-and-thin-traits/) and "
+"this [RFC issue](https://github.com/rust-lang/rfcs/issues/349) for more "
+"details."
+msgstr ""
+
+#: src/anti_patterns/deref.md:113
+msgid ""
+"The `Deref` trait is designed for the implementation of custom pointer "
+"types. The intention is that it will take a pointer-to-`T` to a `T`, not "
+"convert between different types. It is a shame that this isn't (probably "
+"cannot be) enforced by the trait definition."
+msgstr ""
+
+#: src/anti_patterns/deref.md:118
+msgid ""
+"Rust tries to strike a careful balance between explicit and implicit "
+"mechanisms, favouring explicit conversions between types. Automatic "
+"dereferencing in the dot operator is a case where the ergonomics strongly "
+"favour an implicit mechanism, but the intention is that this is limited to "
+"degrees of indirection, not conversion between arbitrary types."
+msgstr ""
+
+#: src/anti_patterns/deref.md:124
+msgid "See also"
+msgstr ""
+
+#: src/anti_patterns/deref.md:126
+msgid "[Collections are smart pointers idiom](../idioms/deref.md)."
+msgstr ""
+
+#: src/anti_patterns/deref.md:127
+msgid ""
+"Delegation crates for less boilerplate like [delegate](https://crates.io/"
+"crates/delegate) or [ambassador](https://crates.io/crates/ambassador)"
+msgstr ""
+
+#: src/anti_patterns/deref.md:130
+msgid ""
+"[Documentation for `Deref` trait](https://doc.rust-lang.org/std/ops/trait."
+"Deref.html)."
+msgstr ""

@@ -13,22 +13,22 @@
     },
     "zh_CN" : 
     {
-      "branch" : "",
+      "branch" : "main",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2025-12-15 00:21:25 +0100",
+        "hash" : "4ba2ec125d398dd2ae8c96b0ed1283d62dda7d5f",
+        "title" : "ci: don't check fragments for now"
       }
     },
     "zh_TW" : 
     {
-      "branch" : "",
+      "branch" : "main",
       "commit" : 
       {
-        "date" : "",
-        "hash" : "",
-        "title" : ""
+        "date" : "2025-12-15 00:21:25 +0100",
+        "hash" : "4ba2ec125d398dd2ae8c96b0ed1283d62dda7d5f",
+        "title" : "ci: don't check fragments for now"
       }
     }
   },

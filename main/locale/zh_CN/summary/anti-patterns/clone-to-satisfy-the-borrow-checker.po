@@ -1,0 +1,151 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/anti_patterns/borrow_clone.md:1
+msgid "Clone to satisfy the borrow checker"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:3
+msgid "Description"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:5
+msgid ""
+"The borrow checker prevents Rust users from developing otherwise unsafe code "
+"by ensuring that either: only one mutable reference exists, or potentially "
+"many but all immutable references exist. If the code written does not hold "
+"true to these conditions, this anti-pattern arises when the developer "
+"resolves the compiler error by cloning the variable."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:11
+msgid "Example"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:14
+msgid "// define any variable\n"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:16
+msgid "// Borrow `x` -- but clone it first\n"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:19
+msgid ""
+"// without the x.clone() two lines prior, this line would fail on compile "
+"as\n"
+"// x has been borrowed\n"
+"// thanks to x.clone(), x was never borrowed, and this line will run.\n"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:23
+msgid "\"{x}\""
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:24
+msgid ""
+"// perform some action on the borrow to prevent rust from optimizing this\n"
+"//out of existence\n"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:30
+msgid "Motivation"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:32
+msgid ""
+"It is tempting, particularly for beginners, to use this pattern to resolve "
+"confusing issues with the borrow checker. However, there are serious "
+"consequences. Using `.clone()` causes a copy of the data to be made. Any "
+"changes between the two are not synchronized -- as if two completely "
+"separate variables exist."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:38
+msgid ""
+"There are special cases -- `Rc<T>` is designed to handle clones "
+"intelligently. It internally manages exactly one copy of the data. Invoking "
+"`.clone()` on `Rc` produces a new `Rc` instance, which points to the same "
+"data as the source `Rc`, while increasing a reference count. The same "
+"applies to `Arc`, the thread-safe counterpart of `Rc`."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:44
+msgid ""
+"In general, clones should be deliberate, with full understanding of the "
+"consequences. If a clone is used to make a borrow checker error disappear, "
+"that's a good indication this anti-pattern may be in use."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:48
+msgid ""
+"Even though `.clone()` is an indication of a bad pattern, sometimes **it is "
+"fine to write inefficient code**, in cases such as when:"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:51
+msgid "the developer is still new to ownership"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:52
+msgid ""
+"the code doesn't have great speed or memory constraints (like hackathon "
+"projects or prototypes)"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:54
+msgid ""
+"satisfying the borrow checker is really complicated, and you prefer to "
+"optimize readability over performance"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:57
+msgid ""
+"If an unnecessary clone is suspected, The [Rust Book's chapter on Ownership]"
+"(https://doc.rust-lang.org/book/ownership.html) should be understood fully "
+"before assessing whether the clone is required or not."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:62
+msgid ""
+"Also be sure to always run `cargo clippy` in your project, which will detect "
+"some cases in which `.clone()` is not necessary."
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:65
+msgid "See also"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:67
+msgid ""
+"[`mem::{take(_), replace(_)}` to keep owned values in changed enums](../"
+"idioms/mem-replace.md)"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:68
+msgid ""
+"[`Rc<T>` documentation, which handles .clone() intelligently](http://doc."
+"rust-lang.org/std/rc/)"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:69
+msgid ""
+"[`Arc<T>` documentation, a thread-safe reference-counting pointer](https://"
+"doc.rust-lang.org/std/sync/struct.Arc.html)"
+msgstr ""
+
+#: src/anti_patterns/borrow_clone.md:70
+msgid ""
+"[Tricks with ownership in Rust](https://web.archive.org/web/20210120233744/"
+"https://xion.io/post/code/rust-borrowchk-tricks.html)"
+msgstr ""

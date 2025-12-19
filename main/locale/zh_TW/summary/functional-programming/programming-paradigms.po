@@ -1,0 +1,171 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/functional/paradigms.md:1
+msgid "Programming paradigms"
+msgstr ""
+
+#: src/functional/paradigms.md:3
+msgid ""
+"One of the biggest hurdles to understanding functional programs when coming "
+"from an imperative background is the shift in thinking. Imperative programs "
+"describe **how** to do something, whereas declarative programs describe "
+"**what** to do. Let's sum the numbers from 1 to 10 to show this."
+msgstr ""
+
+#: src/functional/paradigms.md:8
+msgid "Imperative"
+msgstr ""
+
+#: src/functional/paradigms.md:15
+msgid "\"{sum}\""
+msgstr ""
+
+#: src/functional/paradigms.md:18
+msgid ""
+"With imperative programs, we have to play compiler to see what is happening. "
+"Here, we start with a `sum` of `0`. Next, we iterate through the range from "
+"1 to 10. Each time through the loop, we add the corresponding value in the "
+"range. Then we print it out."
+msgstr ""
+
+#: src/functional/paradigms.md:23
+msgid "`i`"
+msgstr ""
+
+#: src/functional/paradigms.md:23
+msgid "`sum`"
+msgstr ""
+
+#: src/functional/paradigms.md:25 src/functional/paradigms.md:59
+#: src/functional/paradigms.md:60
+msgid "1"
+msgstr ""
+
+#: src/functional/paradigms.md:26 src/functional/paradigms.md:60
+msgid "2"
+msgstr ""
+
+#: src/functional/paradigms.md:26 src/functional/paradigms.md:27
+#: src/functional/paradigms.md:60 src/functional/paradigms.md:61
+msgid "3"
+msgstr ""
+
+#: src/functional/paradigms.md:27 src/functional/paradigms.md:30
+#: src/functional/paradigms.md:61 src/functional/paradigms.md:62
+#: src/functional/paradigms.md:64
+msgid "6"
+msgstr ""
+
+#: src/functional/paradigms.md:28 src/functional/paradigms.md:62
+msgid "4"
+msgstr ""
+
+#: src/functional/paradigms.md:28 src/functional/paradigms.md:34
+#: src/functional/paradigms.md:62 src/functional/paradigms.md:63
+#: src/functional/paradigms.md:68
+msgid "10"
+msgstr ""
+
+#: src/functional/paradigms.md:29 src/functional/paradigms.md:63
+msgid "5"
+msgstr ""
+
+#: src/functional/paradigms.md:29 src/functional/paradigms.md:63
+#: src/functional/paradigms.md:64
+msgid "15"
+msgstr ""
+
+#: src/functional/paradigms.md:30 src/functional/paradigms.md:64
+#: src/functional/paradigms.md:65
+msgid "21"
+msgstr ""
+
+#: src/functional/paradigms.md:31 src/functional/paradigms.md:65
+msgid "7"
+msgstr ""
+
+#: src/functional/paradigms.md:31 src/functional/paradigms.md:65
+#: src/functional/paradigms.md:66
+msgid "28"
+msgstr ""
+
+#: src/functional/paradigms.md:32 src/functional/paradigms.md:66
+msgid "8"
+msgstr ""
+
+#: src/functional/paradigms.md:32 src/functional/paradigms.md:66
+#: src/functional/paradigms.md:67
+msgid "36"
+msgstr ""
+
+#: src/functional/paradigms.md:33 src/functional/paradigms.md:67
+msgid "9"
+msgstr ""
+
+#: src/functional/paradigms.md:33 src/functional/paradigms.md:67
+#: src/functional/paradigms.md:68
+msgid "45"
+msgstr ""
+
+#: src/functional/paradigms.md:34 src/functional/paradigms.md:68
+msgid "55"
+msgstr ""
+
+#: src/functional/paradigms.md:36
+msgid ""
+"This is how most of us start out programming. We learn that a program is a "
+"set of steps."
+msgstr ""
+
+#: src/functional/paradigms.md:39
+msgid "Declarative"
+msgstr ""
+
+#: src/functional/paradigms.md:42
+msgid "\"{}\""
+msgstr ""
+
+#: src/functional/paradigms.md:45
+msgid ""
+"Whoa! This is really different! What's going on here? Remember that with "
+"declarative programs we are describing **what** to do, rather than **how** "
+"to do it. `fold` is a function that [composes](https://en.wikipedia.org/wiki/"
+"Function_composition) functions. The name is a convention from Haskell."
+msgstr ""
+
+#: src/functional/paradigms.md:51
+msgid ""
+"Here, we are composing functions of addition (this closure: `|a, b| a + b`) "
+"with a range from 1 to 10. The `0` is the starting point, so `a` is `0` at "
+"first. `b` is the first element of the range, `1`. `0 + 1 = 1` is the "
+"result. So now we `fold` again, with `a = 1`, `b = 2` and so `1 + 2 = 3` is "
+"the next result. This process continues until we get to the last element in "
+"the range, `10`."
+msgstr ""
+
+#: src/functional/paradigms.md:57
+msgid "`a`"
+msgstr ""
+
+#: src/functional/paradigms.md:57
+msgid "`b`"
+msgstr ""
+
+#: src/functional/paradigms.md:57
+msgid "result"
+msgstr ""
+
+#: src/functional/paradigms.md:59
+msgid "0"
+msgstr ""

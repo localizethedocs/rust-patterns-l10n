@@ -1,0 +1,114 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/option-iter.md:1
+msgid "Iterating over an `Option`"
+msgstr ""
+
+#: src/idioms/option-iter.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/option-iter.md:5
+msgid ""
+"`Option` can be viewed as a container that contains either zero or one "
+"element. In particular, it implements the `IntoIterator` trait, and as such "
+"can be used with generic code that needs such a type."
+msgstr ""
+
+#: src/idioms/option-iter.md:9
+msgid "Examples"
+msgstr ""
+
+#: src/idioms/option-iter.md:11
+msgid ""
+"Since `Option` implements `IntoIterator`, it can be used as an argument to "
+"[`.extend()`](https://doc.rust-lang.org/std/iter/trait.Extend.html#tymethod."
+"extend):"
+msgstr ""
+
+#: src/idioms/option-iter.md:15 src/idioms/option-iter.md:31
+msgid "\"Turing\""
+msgstr ""
+
+#: src/idioms/option-iter.md:16 src/idioms/option-iter.md:32
+msgid "\"Curry\""
+msgstr ""
+
+#: src/idioms/option-iter.md:16 src/idioms/option-iter.md:32
+msgid "\"Kleene\""
+msgstr ""
+
+#: src/idioms/option-iter.md:16 src/idioms/option-iter.md:32
+msgid "\"Markov\""
+msgstr ""
+
+#: src/idioms/option-iter.md:19
+msgid "// equivalent to\n"
+msgstr ""
+
+#: src/idioms/option-iter.md:26
+msgid ""
+"If you need to tack an `Option` to the end of an existing iterator, you can "
+"pass it to [`.chain()`](https://doc.rust-lang.org/std/iter/trait.Iterator."
+"html#method.chain):"
+msgstr ""
+
+#: src/idioms/option-iter.md:35
+msgid "\"{logician} is a logician\""
+msgstr ""
+
+#: src/idioms/option-iter.md:39
+msgid ""
+"Note that if the `Option` is always `Some`, then it is more idiomatic to use "
+"[`std::iter::once`](https://doc.rust-lang.org/std/iter/fn.once.html) on the "
+"element instead."
+msgstr ""
+
+#: src/idioms/option-iter.md:43
+msgid ""
+"Also, since `Option` implements `IntoIterator`, it's possible to iterate "
+"over it using a `for` loop. This is equivalent to matching it with `if let "
+"Some(..)`, and in most cases you should prefer the latter."
+msgstr ""
+
+#: src/idioms/option-iter.md:47
+msgid "See also"
+msgstr ""
+
+#: src/idioms/option-iter.md:49
+msgid ""
+"[`std::iter::once`](https://doc.rust-lang.org/std/iter/fn.once.html) is an "
+"iterator which yields exactly one element. It's a more readable alternative "
+"to `Some(foo).into_iter()`."
+msgstr ""
+
+#: src/idioms/option-iter.md:53
+msgid ""
+"[`Iterator::filter_map`](https://doc.rust-lang.org/std/iter/trait.Iterator."
+"html#method.filter_map) is a version of [`Iterator::map`](https://doc.rust-"
+"lang.org/std/iter/trait.Iterator.html#method.map), specialized to mapping "
+"functions which return `Option`."
+msgstr ""
+
+#: src/idioms/option-iter.md:58
+msgid ""
+"The [`ref_slice`](https://crates.io/crates/ref_slice) crate provides "
+"functions for converting an `Option` to a zero- or one-element slice."
+msgstr ""
+
+#: src/idioms/option-iter.md:61
+msgid ""
+"[Documentation for `Option<T>`](https://doc.rust-lang.org/std/option/enum."
+"Option.html)"
+msgstr ""

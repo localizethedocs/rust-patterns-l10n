@@ -1,0 +1,609 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/functional/optics.md:1
+msgid "Functional Language Optics"
+msgstr ""
+
+#: src/functional/optics.md:3
+msgid ""
+"Optics is a type of API design that is common to functional languages. This "
+"is a pure functional concept that is not frequently used in Rust."
+msgstr ""
+
+#: src/functional/optics.md:6
+msgid ""
+"Nevertheless, exploring the concept may be helpful to understand other "
+"patterns in Rust APIs, such as [visitors](../patterns/behavioural/visitor."
+"md). They also have niche use cases."
+msgstr ""
+
+#: src/functional/optics.md:10
+msgid ""
+"This is quite a large topic, and would require actual books on language "
+"design to fully get into its abilities. However their applicability in Rust "
+"is much simpler."
+msgstr ""
+
+#: src/functional/optics.md:14
+msgid ""
+"To explain the relevant parts of the concept, the `Serde`\\-API will be used "
+"as an example, as it is one that is difficult for many to understand from "
+"simply the API documentation."
+msgstr ""
+
+#: src/functional/optics.md:18
+msgid ""
+"In the process, different specific patterns, called Optics, will be covered. "
+"These are _The Iso_, _The Poly Iso_, and _The Prism_."
+msgstr ""
+
+#: src/functional/optics.md:21
+msgid "An API Example: Serde"
+msgstr ""
+
+#: src/functional/optics.md:23
+msgid ""
+"Trying to understand the way _Serde_ works by only reading the API is a "
+"challenge, especially the first time. Consider the `Deserializer` trait, "
+"implemented by any library which parses a new data format:"
+msgstr ""
+
+#: src/functional/optics.md:39 src/functional/optics.md:61
+#: src/functional/optics.md:379 src/functional/optics.md:401
+msgid "// remainder omitted\n"
+msgstr ""
+
+#: src/functional/optics.md:43
+msgid "And here's the definition of the `Visitor` trait passed in generically:"
+msgstr ""
+
+#: src/functional/optics.md:65
+msgid ""
+"There is a lot of type erasure going on here, with multiple levels of "
+"associated types being passed back and forth."
+msgstr ""
+
+#: src/functional/optics.md:68
+msgid ""
+"But what is the big picture? Why not just have the `Visitor` return the "
+"pieces the caller needs in a streaming API, and call it a day? Why all the "
+"extra pieces?"
+msgstr ""
+
+#: src/functional/optics.md:72
+msgid ""
+"One way to understand it is to look at a functional languages concept called "
+"_optics_."
+msgstr ""
+
+#: src/functional/optics.md:75
+msgid ""
+"This is a way to do composition of behavior and proprieties that is designed "
+"to facilitate patterns common to Rust: failure, type transformation, etc.[^1]"
+msgstr ""
+
+#: src/functional/optics.md:78
+msgid ""
+"The Rust language does not have very good support for these directly. "
+"However, they appear in the design of the language itself, and their "
+"concepts can help to understand some of Rust's APIs. As a result, this "
+"attempts to explain the concepts with the way Rust does it."
+msgstr ""
+
+#: src/functional/optics.md:83
+msgid ""
+"This will perhaps shed light on what those APIs are achieving: specific "
+"properties of composability."
+msgstr ""
+
+#: src/functional/optics.md:86
+msgid "Basic Optics"
+msgstr ""
+
+#: src/functional/optics.md:88
+msgid "The Iso"
+msgstr ""
+
+#: src/functional/optics.md:90
+msgid ""
+"The Iso is a value transformer between two types. It is extremely simple, "
+"but a conceptually important building block."
+msgstr ""
+
+#: src/functional/optics.md:93
+msgid ""
+"As an example, suppose that we have a custom Hash table structure used as a "
+"concordance for a document.[^2] It uses strings for keys (words) and a list "
+"of indexes for values (file offsets, for instance)."
+msgstr ""
+
+#: src/functional/optics.md:97
+msgid ""
+"A key feature is the ability to serialize this format to disk. A \"quick and "
+"dirty\" approach would be to implement a conversion to and from a string in "
+"JSON format. (Errors are ignored for the time being, they will be handled "
+"later.)"
+msgstr ""
+
+#: src/functional/optics.md:101
+msgid "To write it in a normal form expected by functional language users:"
+msgstr ""
+
+#: src/functional/optics.md:110
+msgid ""
+"The Iso is thus a pair of functions which convert values of different types: "
+"`serialize` and `deserialize`."
+msgstr ""
+
+#: src/functional/optics.md:113
+msgid "A straightforward implementation:"
+msgstr ""
+
+#: src/functional/optics.md:129
+msgid "// invalid concordances are empty\n"
+msgstr ""
+
+#: src/functional/optics.md:136
+msgid ""
+"This may seem rather silly. In Rust, this type of behavior is typically done "
+"with traits. After all, the standard library has `FromStr` and `ToString` in "
+"it."
+msgstr ""
+
+#: src/functional/optics.md:139
+msgid "But that is where our next subject comes in: Poly Isos."
+msgstr ""
+
+#: src/functional/optics.md:141
+msgid "Poly Isos"
+msgstr ""
+
+#: src/functional/optics.md:143
+msgid ""
+"The previous example was simply converting between values of two fixed "
+"types. This next block builds upon it with generics, and is more interesting."
+msgstr ""
+
+#: src/functional/optics.md:146
+msgid ""
+"Poly Isos allow an operation to be generic over any type while returning a "
+"single type."
+msgstr ""
+
+#: src/functional/optics.md:149
+msgid ""
+"This brings us closer to parsing. Consider what a basic parser would do "
+"ignoring error cases. Again, this is its normal form:"
+msgstr ""
+
+#: src/functional/optics.md:159
+msgid "Here we have our first generic, the type `T` being converted."
+msgstr ""
+
+#: src/functional/optics.md:161
+msgid ""
+"In Rust, this could be implemented with a pair of traits in the standard "
+"library: `FromStr` and `ToString`. The Rust version even handles errors:"
+msgstr ""
+
+#: src/functional/optics.md:176
+msgid ""
+"Unlike the Iso, the Poly Iso allows application of multiple types, and "
+"returns them generically. This is what you would want for a basic string "
+"parser."
+msgstr ""
+
+#: src/functional/optics.md:179
+msgid ""
+"At first glance, this seems like a good option for writing a parser. Let's "
+"see it in action:"
+msgstr ""
+
+#: src/functional/optics.md:208 src/functional/optics.md:282
+msgid "\"hello\""
+msgstr ""
+
+#: src/functional/optics.md:210
+msgid "\"Our Test Struct as JSON: {}\""
+msgstr ""
+
+#: src/functional/optics.md:214
+msgid "That seems quite logical. However, there are two problems with this."
+msgstr ""
+
+#: src/functional/optics.md:216
+msgid ""
+"First, `to_string` does not indicate to API users, \"this is JSON.\" Every "
+"type would need to agree on a JSON representation, and many of the types in "
+"the Rust standard library already don't. Using this is a poor fit. This can "
+"easily be resolved with our own trait."
+msgstr ""
+
+#: src/functional/optics.md:221
+msgid "But there is a second, subtler problem: scaling."
+msgstr ""
+
+#: src/functional/optics.md:223
+msgid ""
+"When every type writes `to_string` by hand, this works. But if every single "
+"person who wants their type to be serializable has to write a bunch of code "
+"-- and possibly different JSON libraries -- to do it themselves, it will "
+"turn into a mess very quickly!"
+msgstr ""
+
+#: src/functional/optics.md:228
+msgid ""
+"The answer is one of Serde's two key innovations: an independent data model "
+"to represent Rust data in structures common to data serialization languages. "
+"The result is that it can use Rust's code generation abilities to create an "
+"intermediary conversion type it calls a `Visitor`."
+msgstr ""
+
+#: src/functional/optics.md:233
+msgid ""
+"This means, in normal form (again, skipping error handling for simplicity):"
+msgstr ""
+
+#: src/functional/optics.md:247
+msgid ""
+"The result is one Poly Iso and one Iso (respectively). Both of these can be "
+"implemented with traits:"
+msgstr ""
+
+#: src/functional/optics.md:263
+msgid ""
+"Because there is a uniform set of rules to transform Rust structures to the "
+"independent form, it is even possible to have code generation creating the "
+"`Visitor` associated with type `T`:"
+msgstr ""
+
+#: src/functional/optics.md:268
+msgid "// the \"Serde\" derive creates the trait impl block\n"
+msgstr ""
+
+#: src/functional/optics.md:273
+msgid "// user writes this macro to generate an associated visitor type\n"
+msgstr ""
+
+#: src/functional/optics.md:278
+msgid "But let's actually try that approach."
+msgstr ""
+
+#: src/functional/optics.md:284
+msgid "\"Our Test Struct as JSON: {a_data}\""
+msgstr ""
+
+#: src/functional/optics.md:290
+msgid ""
+"It turns out that the conversion isn't symmetric after all! On paper it is, "
+"but with the auto-generated code the name of the actual type necessary to "
+"convert all the way from `String` is hidden. We'd need some kind of "
+"`generated_visitor_for!` macro to obtain the type name."
+msgstr ""
+
+#: src/functional/optics.md:295
+msgid "It's wonky, but it works... until we get to the elephant in the room."
+msgstr ""
+
+#: src/functional/optics.md:297
+msgid ""
+"The only format currently supported is JSON. How would we support more "
+"formats?"
+msgstr ""
+
+#: src/functional/optics.md:299
+msgid ""
+"The current design requires completely re-writing all of the code generation "
+"and creating a new Serde trait. That is quite terrible and not extensible at "
+"all!"
+msgstr ""
+
+#: src/functional/optics.md:302
+msgid "In order to solve that, we need something more powerful."
+msgstr ""
+
+#: src/functional/optics.md:304
+msgid "Prism"
+msgstr ""
+
+#: src/functional/optics.md:306
+msgid ""
+"To take format into account, we need something in normal form like this:"
+msgstr ""
+
+#: src/functional/optics.md:315
+msgid ""
+"This construct is called a Prism. It is \"one level higher\" in generics "
+"than Poly Isos (in this case, the \"intersecting\" type F is the key)."
+msgstr ""
+
+#: src/functional/optics.md:318
+msgid ""
+"Unfortunately because `Visitor` is a trait (since each incarnation requires "
+"its own custom code), this would require a kind of generic type boundary "
+"that Rust does not support."
+msgstr ""
+
+#: src/functional/optics.md:322
+msgid ""
+"Fortunately, we still have that `Visitor` type from before. What is the "
+"`Visitor` doing? It is attempting to allow each data structure to define the "
+"way it is itself parsed."
+msgstr ""
+
+#: src/functional/optics.md:326
+msgid ""
+"Well what if we could add one more interface for the generic format? Then "
+"the `Visitor` is just an implementation detail, and it would \"bridge\" the "
+"two APIs."
+msgstr ""
+
+#: src/functional/optics.md:329
+msgid "In normal form:"
+msgstr ""
+
+#: src/functional/optics.md:348
+msgid ""
+"And what do you know, a pair of Poly Isos at the bottom which can be "
+"implemented as traits!"
+msgstr ""
+
+#: src/functional/optics.md:351
+msgid "Thus we have the Serde API:"
+msgstr ""
+
+#: src/functional/optics.md:353
+msgid ""
+"Each type to be serialized implements `Deserialize` or `Serialize`, "
+"equivalent to the `Serde` class"
+msgstr ""
+
+#: src/functional/optics.md:355
+msgid ""
+"They get a type (well two, one for each direction) implementing the "
+"`Visitor` trait, which is usually (but not always) done through code "
+"generated by a derive macro. This contains the logic to construct or "
+"destruct between the data type and the format of the Serde data model."
+msgstr ""
+
+#: src/functional/optics.md:359
+msgid ""
+"The type implementing the `Deserializer` trait handles all details specific "
+"to the format, being \"driven by\" the `Visitor`."
+msgstr ""
+
+#: src/functional/optics.md:362
+msgid ""
+"This splitting and Rust type erasure is really to achieve a Prism through "
+"indirection."
+msgstr ""
+
+#: src/functional/optics.md:365
+msgid "You can see it on the `Deserializer` trait"
+msgstr ""
+
+#: src/functional/optics.md:383
+msgid "And the visitor:"
+msgstr ""
+
+#: src/functional/optics.md:405
+msgid "And the trait `Deserialize` implemented by the macros:"
+msgstr ""
+
+#: src/functional/optics.md:415
+msgid "This has been abstract, so let's look at a concrete example."
+msgstr ""
+
+#: src/functional/optics.md:417
+msgid ""
+"How does actual Serde deserialize a bit of JSON into `struct Concordance` "
+"from earlier?"
+msgstr ""
+
+#: src/functional/optics.md:420
+msgid ""
+"The user would call a library function to deserialize the data. This would "
+"create a `Deserializer` based on the JSON format."
+msgstr ""
+
+#: src/functional/optics.md:422
+msgid ""
+"Based on the fields in the struct, a `Visitor` would be created (more on "
+"that in a moment) which knows how to create each type in a generic data "
+"model that was needed to represent it: `Vec` (list), `u64` and `String`."
+msgstr ""
+
+#: src/functional/optics.md:425
+msgid "The deserializer would make calls to the `Visitor` as it parsed items."
+msgstr ""
+
+#: src/functional/optics.md:426
+msgid ""
+"The `Visitor` would indicate if the items found were expected, and if not, "
+"raise an error to indicate deserialization has failed."
+msgstr ""
+
+#: src/functional/optics.md:429
+msgid "For our very simple structure above, the expected pattern would be:"
+msgstr ""
+
+#: src/functional/optics.md:431
+msgid ""
+"Begin visiting a map (_Serde_'s equivalent to `HashMap` or JSON's "
+"dictionary)."
+msgstr ""
+
+#: src/functional/optics.md:433
+msgid "Visit a string key called \"keys\"."
+msgstr ""
+
+#: src/functional/optics.md:434
+msgid "Begin visiting a map value."
+msgstr ""
+
+#: src/functional/optics.md:435
+msgid "For each item, visit a string key then an integer value."
+msgstr ""
+
+#: src/functional/optics.md:436 src/functional/optics.md:443
+msgid "Visit the end of the map."
+msgstr ""
+
+#: src/functional/optics.md:437
+msgid "Store the map into the `keys` field of the data structure."
+msgstr ""
+
+#: src/functional/optics.md:438
+msgid "Visit a string key called \"value_table\"."
+msgstr ""
+
+#: src/functional/optics.md:439
+msgid "Begin visiting a list value."
+msgstr ""
+
+#: src/functional/optics.md:440
+msgid "For each item, visit an integer."
+msgstr ""
+
+#: src/functional/optics.md:441
+msgid "Visit the end of the list"
+msgstr ""
+
+#: src/functional/optics.md:442
+msgid "Store the list into the `value_table` field."
+msgstr ""
+
+#: src/functional/optics.md:445
+msgid "But what determines which \"observation\" pattern is expected?"
+msgstr ""
+
+#: src/functional/optics.md:447
+msgid ""
+"A functional programming language would be able to use currying to create "
+"reflection of each type based on the type itself. Rust does not support "
+"that, so every single type would need to have its own code written based on "
+"its fields and their properties."
+msgstr ""
+
+#: src/functional/optics.md:452
+msgid "_Serde_ solves this usability challenge with a derive macro:"
+msgstr ""
+
+#: src/functional/optics.md:464
+msgid ""
+"That macro simply generates an impl block causing the struct to implement a "
+"trait called `Deserialize`."
+msgstr ""
+
+#: src/functional/optics.md:467
+msgid ""
+"This is the function that determines how to create the struct itself. Code "
+"is generated based on the struct's fields. When the parsing library is "
+"called - in our example, a JSON parsing library - it creates a "
+"`Deserializer` and calls `Type::deserialize` with it as a parameter."
+msgstr ""
+
+#: src/functional/optics.md:472
+msgid ""
+"The `deserialize` code will then create a `Visitor` which will have its "
+"calls \"refracted\" by the `Deserializer`. If everything goes well, "
+"eventually that `Visitor` will construct a value corresponding to the type "
+"being parsed and return it."
+msgstr ""
+
+#: src/functional/optics.md:477
+msgid ""
+"For a complete example, see the [_Serde_ documentation](https://serde.rs/"
+"deserialize-struct.html)."
+msgstr ""
+
+#: src/functional/optics.md:480
+msgid ""
+"The result is that types to be deserialized only implement the \"top layer\" "
+"of the API, and file formats only need to implement the \"bottom layer\". "
+"Each piece can then \"just work\" with the rest of the ecosystem, since "
+"generic types will bridge them."
+msgstr ""
+
+#: src/functional/optics.md:485
+msgid ""
+"In conclusion, Rust's generic-inspired type system can bring it close to "
+"these concepts and use their power, as shown in this API design. But it may "
+"also need procedural macros to create bridges for its generics."
+msgstr ""
+
+#: src/functional/optics.md:489
+msgid ""
+"If you are interested in learning more about this topic, please check the "
+"following section."
+msgstr ""
+
+#: src/functional/optics.md:492
+msgid "See Also"
+msgstr ""
+
+#: src/functional/optics.md:494
+msgid ""
+"[lens-rs crate](https://crates.io/crates/lens-rs) for a pre-built lenses "
+"implementation, with a cleaner interface than these examples"
+msgstr ""
+
+#: src/functional/optics.md:496
+msgid ""
+"[Serde](https://serde.rs) itself, which makes these concepts intuitive for "
+"end users (i.e. defining the structs) without needing to understand the "
+"details"
+msgstr ""
+
+#: src/functional/optics.md:498
+msgid ""
+"[luminance](https://github.com/phaazon/luminance-rs) is a crate for drawing "
+"computer graphics that uses similar API design, including procedural macros "
+"to create full prisms for buffers of different pixel types that remain "
+"generic"
+msgstr ""
+
+#: src/functional/optics.md:501
+msgid ""
+"[An Article about Lenses in Scala](https://web.archive.org/"
+"web/20221128185849/https://medium.com/zyseme-technology/functional-"
+"references-lens-and-other-optics-in-scala-e5f7e2fdafe) that is very readable "
+"even without Scala expertise."
+msgstr ""
+
+#: src/functional/optics.md:503
+msgid ""
+"[Paper: Profunctor Optics: Modular Data Accessors](https://web.archive.org/"
+"web/20220701102832/https://arxiv.org/ftp/arxiv/papers/1703/1703.10857.pdf)"
+msgstr ""
+
+#: src/functional/optics.md:505
+msgid ""
+"[Musli](https://github.com/udoprog/musli) is a library which attempts to use "
+"a similar structure with a different approach, e.g. doing away with the "
+"visitor"
+msgstr ""
+
+#: src/functional/optics.md:508
+msgid ""
+"[School of Haskell: A Little Lens Starter Tutorial](https://web.archive.org/"
+"web/20221128190041/https://www.schoolofhaskell.com/school/to-infinity-and-"
+"beyond/pick-of-the-week/a-little-lens-starter-tutorial)"
+msgstr ""
+
+#: src/functional/optics.md:510
+msgid ""
+"[Concordance on Wikipedia](https://en.wikipedia.org/wiki/"
+"Concordance_(publishing))"
+msgstr ""

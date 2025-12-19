@@ -1,0 +1,86 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/return-consumed-arg-on-error.md:1
+msgid "Return consumed argument on error"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:5
+msgid ""
+"If a fallible function consumes (moves) an argument, return that argument "
+"back inside an error."
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:8
+msgid "Example"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:12
+msgid "\"using {value} in a meaningful way\""
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:13
+msgid "// Simulate non-deterministic fallible action.\n"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:28
+msgid "\"imagine this is very long string\""
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:31
+msgid "// Try to send value two times.\n"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:41
+msgid "\"success: {success}\""
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:45
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:47
+msgid ""
+"In case of error you may want to try some alternative way or to retry action "
+"in case of non-deterministic function. But if the argument is always "
+"consumed, you are forced to clone it on every call, which is not very "
+"efficient."
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:51
+msgid ""
+"The standard library uses this approach in e.g. `String::from_utf8` method. "
+"When given a vector that doesn't contain valid UTF-8, a `FromUtf8Error` is "
+"returned. You can get original vector back using `FromUtf8Error::into_bytes` "
+"method."
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:55
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:57
+msgid "Better performance because of moving arguments whenever possible."
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:59
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/return-consumed-arg-on-error.md:61
+msgid "Slightly more complex error types."
+msgstr ""

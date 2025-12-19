@@ -1,0 +1,212 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/SUMMARY.md:1
+msgid "Summary"
+msgstr ""
+
+#: src/SUMMARY.md:3
+msgid "Introduction"
+msgstr ""
+
+#: src/SUMMARY.md:4
+msgid "Translations"
+msgstr ""
+
+#: src/SUMMARY.md:5
+msgid "Idioms"
+msgstr ""
+
+#: src/SUMMARY.md:6
+msgid "Use borrowed types for arguments"
+msgstr ""
+
+#: src/SUMMARY.md:7
+msgid "Concatenating Strings with format!"
+msgstr ""
+
+#: src/SUMMARY.md:8
+msgid "Constructor"
+msgstr ""
+
+#: src/SUMMARY.md:9
+msgid "The Default Trait"
+msgstr ""
+
+#: src/SUMMARY.md:10
+msgid "Collections Are Smart Pointers"
+msgstr ""
+
+#: src/SUMMARY.md:11
+msgid "Finalisation in Destructors"
+msgstr ""
+
+#: src/SUMMARY.md:12
+msgid "`mem::{take(_), replace(_)}`"
+msgstr ""
+
+#: src/SUMMARY.md:13
+msgid "On-Stack Dynamic Dispatch"
+msgstr ""
+
+#: src/SUMMARY.md:14 src/SUMMARY.md:41
+msgid "Foreign function interface (FFI)"
+msgstr ""
+
+#: src/SUMMARY.md:15
+msgid "Idiomatic Errors"
+msgstr ""
+
+#: src/SUMMARY.md:16
+msgid "Accepting Strings"
+msgstr ""
+
+#: src/SUMMARY.md:17
+msgid "Passing Strings"
+msgstr ""
+
+#: src/SUMMARY.md:18
+msgid "Iterating over an Option"
+msgstr ""
+
+#: src/SUMMARY.md:19
+msgid "Pass Variables to Closure"
+msgstr ""
+
+#: src/SUMMARY.md:20
+msgid "Privacy For Extensibility"
+msgstr ""
+
+#: src/SUMMARY.md:21
+msgid "Easy doc initialization"
+msgstr ""
+
+#: src/SUMMARY.md:22
+msgid "Temporary mutability"
+msgstr ""
+
+#: src/SUMMARY.md:23
+msgid "Return consumed arg on error"
+msgstr ""
+
+#: src/SUMMARY.md:25
+msgid "Design Patterns"
+msgstr ""
+
+#: src/SUMMARY.md:26
+msgid "Behavioural"
+msgstr ""
+
+#: src/SUMMARY.md:27
+msgid "Command"
+msgstr ""
+
+#: src/SUMMARY.md:28
+msgid "Interpreter"
+msgstr ""
+
+#: src/SUMMARY.md:29
+msgid "Newtype"
+msgstr ""
+
+#: src/SUMMARY.md:30
+msgid "RAII Guards"
+msgstr ""
+
+#: src/SUMMARY.md:31
+msgid "Strategy"
+msgstr ""
+
+#: src/SUMMARY.md:32
+msgid "Visitor"
+msgstr ""
+
+#: src/SUMMARY.md:33
+msgid "Creational"
+msgstr ""
+
+#: src/SUMMARY.md:34
+msgid "Builder"
+msgstr ""
+
+#: src/SUMMARY.md:35
+msgid "Fold"
+msgstr ""
+
+#: src/SUMMARY.md:36
+msgid "Structural"
+msgstr ""
+
+#: src/SUMMARY.md:37
+msgid "Compose Structs"
+msgstr ""
+
+#: src/SUMMARY.md:38
+msgid "Prefer Small Crates"
+msgstr ""
+
+#: src/SUMMARY.md:39
+msgid "Contain unsafety in small modules"
+msgstr ""
+
+#: src/SUMMARY.md:40
+msgid "Avoid complex type bounds with custom traits"
+msgstr ""
+
+#: src/SUMMARY.md:42
+msgid "Object-Based APIs"
+msgstr ""
+
+#: src/SUMMARY.md:43
+msgid "Type Consolidation into Wrappers"
+msgstr ""
+
+#: src/SUMMARY.md:45
+msgid "Anti-patterns"
+msgstr ""
+
+#: src/SUMMARY.md:46
+msgid "Clone to satisfy the borrow checker"
+msgstr ""
+
+#: src/SUMMARY.md:47
+msgid "`#[deny(warnings)]`"
+msgstr ""
+
+#: src/SUMMARY.md:48
+msgid "Deref Polymorphism"
+msgstr ""
+
+#: src/SUMMARY.md:50
+msgid "Functional Programming"
+msgstr ""
+
+#: src/SUMMARY.md:51
+msgid "Programming paradigms"
+msgstr ""
+
+#: src/SUMMARY.md:52
+msgid "Generics as Type Classes"
+msgstr ""
+
+#: src/SUMMARY.md:53
+msgid "Functional Optics"
+msgstr ""
+
+#: src/SUMMARY.md:55
+msgid "Additional Resources"
+msgstr ""
+
+#: src/SUMMARY.md:56
+msgid "Design principles"
+msgstr ""

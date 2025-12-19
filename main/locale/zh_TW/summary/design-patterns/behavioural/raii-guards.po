@@ -1,0 +1,173 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/behavioural/RAII.md:1
+msgid "RAII with guards"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:5
+msgid ""
+"[RAII](https://en.wikipedia.org/wiki/Resource_Acquisition_Is_Initialization) "
+"stands for \"Resource Acquisition is Initialisation\" which is a terrible "
+"name. The essence of the pattern is that resource initialisation is done in "
+"the constructor of an object and finalisation in the destructor. This "
+"pattern is extended in Rust by using a RAII object as a guard of some "
+"resource and relying on the type system to ensure that access is always "
+"mediated by the guard object."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:12
+msgid "Example"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:14
+msgid ""
+"Mutex guards are the classic example of this pattern from the std library "
+"(this is a simplified version of the real implementation):"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:23
+msgid ""
+"// We keep a reference to our data: T here.\n"
+"    //..\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:29 src/patterns/behavioural/RAII.md:41
+#: src/patterns/behavioural/RAII.md:100
+msgid "//..\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:31
+msgid "// Locking the mutex is explicit.\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:35
+msgid ""
+"// Lock the underlying OS mutex.\n"
+"        //..\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:38
+msgid "// MutexGuard keeps a reference to self\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:45
+msgid "// Destructor for unlocking the mutex.\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:49
+msgid ""
+"// Unlock the underlying OS mutex.\n"
+"        //..\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:53
+msgid ""
+"// Implementing Deref means we can treat MutexGuard like a pointer to T.\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:65
+msgid ""
+"// foo is a method on Foo.\n"
+"              // The borrow checker ensures we can't store a reference to "
+"the underlying\n"
+"              // Foo which will outlive the guard xx.\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:69
+msgid ""
+"// x is unlocked when we exit this function and xx's destructor is "
+"executed.\n"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:73
+msgid "Motivation"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:75
+msgid ""
+"Where a resource must be finalised after use, RAII can be used to do this "
+"finalisation. If it is an error to access that resource after finalisation, "
+"then this pattern can be used to prevent such errors."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:79
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:81
+msgid ""
+"Prevents errors where a resource is not finalised and where a resource is "
+"used after finalisation."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:84
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:86
+msgid ""
+"RAII is a useful pattern for ensuring resources are properly deallocated or "
+"finalised. We can make use of the borrow checker in Rust to statically "
+"prevent errors stemming from using resources after finalisation takes place."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:90
+msgid ""
+"The core aim of the borrow checker is to ensure that references to data do "
+"not outlive that data. The RAII guard pattern works because the guard object "
+"contains a reference to the underlying resource and only exposes such "
+"references. Rust ensures that the guard cannot outlive the underlying "
+"resource and that references to the resource mediated by the guard cannot "
+"outlive the guard. To see how this works it is helpful to examine the "
+"signature of `deref` without lifetime elision:"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:104
+msgid ""
+"The returned reference to the resource has the same lifetime as `self` "
+"(`'a`). The borrow checker therefore ensures that the lifetime of the "
+"reference to `T` is shorter than the lifetime of `self`."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:108
+msgid ""
+"Note that implementing `Deref` is not a core part of this pattern, it only "
+"makes using the guard object more ergonomic. Implementing a `get` method on "
+"the guard works just as well."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:112
+msgid "See also"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:114
+msgid "[Finalisation in destructors idiom](../../idioms/dtor-finally.md)"
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:116
+msgid ""
+"RAII is a common pattern in C++: [cppreference.com](http://en.cppreference."
+"com/w/cpp/language/raii), [wikipedia](https://en.wikipedia.org/wiki/"
+"Resource_Acquisition_Is_Initialization)."
+msgstr ""
+
+#: src/patterns/behavioural/RAII.md:122
+msgid ""
+"[Style guide entry](https://doc.rust-lang.org/1.0.0/style/ownership/raii."
+"html) (currently just a placeholder)."
+msgstr ""

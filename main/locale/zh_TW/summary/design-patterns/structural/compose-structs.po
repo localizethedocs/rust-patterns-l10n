@@ -1,0 +1,179 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/structural/compose-structs.md:1
+msgid "Struct decomposition for independent borrowing"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:5
+msgid ""
+"Sometimes a large struct will cause issues with the borrow checker - "
+"although fields can be borrowed independently, sometimes the whole struct "
+"ends up being used at once, preventing other uses. A solution might be to "
+"decompose the struct into several smaller structs. Then compose these "
+"together into the original struct. Then each struct can be borrowed "
+"separately and have more flexible behaviour."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:12
+msgid ""
+"This will often lead to a better design in other ways: applying this design "
+"pattern often reveals smaller units of functionality."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:15
+msgid "Example"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:17
+msgid ""
+"Here is a contrived example of where the borrow checker foils us in our plan "
+"to use a struct:"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:28
+msgid "\"Connection string: {}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:29
+msgid "\"Timeout: {}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:30
+msgid "\"Pool size: {}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:35
+msgid "\"initial string\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:42
+#: src/patterns/structural/compose-structs.md:96
+msgid "\"new string\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:46
+msgid "The compiler throws following errors:"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:48
+msgid ""
+"```ignore\n"
+"let connection_string = &mut db.connection_string;\n"
+"                        ------------------------- mutable borrow occurs "
+"here\n"
+"print_database(&db);\n"
+"               ^^^ immutable borrow occurs here\n"
+"*connection_string = \"new string\".to_string();\n"
+"------------------ mutable borrow later used here\n"
+"```"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:57
+msgid ""
+"We can apply this design pattern and refactor `Database` into three smaller "
+"structs, thus solving the borrow checking issue:"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:61
+msgid ""
+"// Database is now composed of three structs - ConnectionString, Timeout and "
+"PoolSize.\n"
+"// Let's decompose it into smaller structs\n"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:71
+msgid "// We then compose these smaller structs back into `Database`\n"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:78
+msgid ""
+"// print_database can then take ConnectionString, Timeout and Poolsize "
+"struct instead\n"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:81
+msgid "\"Connection string: {connection_str:?}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:82
+msgid "\"Timeout: {timeout:?}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:83
+msgid "\"Pool size: {pool_size:?}\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:87
+msgid "// Initialize the Database with the three structs\n"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:89
+msgid "\"localhost\""
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:100
+msgid "Motivation"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:102
+msgid ""
+"This pattern is most useful, when you have a struct that ended up with a lot "
+"of fields that you want to borrow independently. Thus having a more flexible "
+"behaviour in the end."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:106
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:108
+msgid ""
+"Decomposition of structs lets you work around limitations in the borrow "
+"checker. And it often produces a better design."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:111
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:113
+msgid ""
+"It can lead to more verbose code. And sometimes, the smaller structs are not "
+"good abstractions, and so we end up with a worse design. That is probably a "
+"'code smell', indicating that the program should be refactored in some way."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:117
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:119
+msgid ""
+"This pattern is not required in languages that don't have a borrow checker, "
+"so in that sense is unique to Rust. However, making smaller units of "
+"functionality often leads to cleaner code: a widely acknowledged principle "
+"of software engineering, independent of the language."
+msgstr ""
+
+#: src/patterns/structural/compose-structs.md:124
+msgid ""
+"This pattern relies on Rust's borrow checker to be able to borrow fields "
+"independently of each other. In the example, the borrow checker knows that "
+"`a.b` and `a.c` are distinct and can be borrowed independently, it does not "
+"try to borrow all of `a`, which would make this pattern useless."
+msgstr ""

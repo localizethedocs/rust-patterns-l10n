@@ -1,0 +1,169 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/creational/fold.md:1
+msgid "Fold"
+msgstr ""
+
+#: src/patterns/creational/fold.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/creational/fold.md:5
+msgid ""
+"Run an algorithm over each item in a collection of data to create a new "
+"item, thus creating a whole new collection."
+msgstr ""
+
+#: src/patterns/creational/fold.md:8
+msgid ""
+"The etymology here is unclear to me. The terms 'fold' and 'folder' are used "
+"in the Rust compiler, although it appears to me to be more like a map than a "
+"fold in the usual sense. See the discussion below for more details."
+msgstr ""
+
+#: src/patterns/creational/fold.md:12
+msgid "Example"
+msgstr ""
+
+#: src/patterns/creational/fold.md:15
+msgid "// The data we will fold, a simple AST.\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:32
+msgid "// The abstract folder\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:38
+msgid ""
+"// A leaf node just returns the node itself. In some cases, we can do this\n"
+"        // to inner nodes too.\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:41
+msgid "// Create a new inner node by folding its children.\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:54
+msgid "// An example concrete implementation - renames every name to 'foo'.\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:59
+msgid "\"foo\""
+msgstr ""
+
+#: src/patterns/creational/fold.md:61
+msgid "// Use the default methods for the other nodes.\n"
+msgstr ""
+
+#: src/patterns/creational/fold.md:65
+msgid ""
+"The result of running the `Renamer` on an AST is a new AST identical to the "
+"old one, but with every name changed to `foo`. A real life folder might have "
+"some state preserved between nodes in the struct itself."
+msgstr ""
+
+#: src/patterns/creational/fold.md:69
+msgid ""
+"A folder can also be defined to map one data structure to a different (but "
+"usually similar) data structure. For example, we could fold an AST into a "
+"HIR tree (HIR stands for high-level intermediate representation)."
+msgstr ""
+
+#: src/patterns/creational/fold.md:73
+msgid "Motivation"
+msgstr ""
+
+#: src/patterns/creational/fold.md:75
+msgid ""
+"It is common to want to map a data structure by performing some operation on "
+"each node in the structure. For simple operations on simple data structures, "
+"this can be done using `Iterator::map`. For more complex operations, perhaps "
+"where earlier nodes can affect the operation on later nodes, or where "
+"iteration over the data structure is non-trivial, using the fold pattern is "
+"more appropriate."
+msgstr ""
+
+#: src/patterns/creational/fold.md:82
+msgid ""
+"Like the visitor pattern, the fold pattern allows us to separate traversal "
+"of a data structure from the operations performed to each node."
+msgstr ""
+
+#: src/patterns/creational/fold.md:85
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/creational/fold.md:87
+msgid ""
+"Mapping data structures in this fashion is common in functional languages. "
+"In OO languages, it would be more common to mutate the data structure in "
+"place. The 'functional' approach is common in Rust, mostly due to the "
+"preference for immutability. Using fresh data structures, rather than "
+"mutating old ones, makes reasoning about the code easier in most "
+"circumstances."
+msgstr ""
+
+#: src/patterns/creational/fold.md:93
+msgid ""
+"The trade-off between efficiency and reusability can be tweaked by changing "
+"how nodes are accepted by the `fold_*` methods."
+msgstr ""
+
+#: src/patterns/creational/fold.md:96
+msgid ""
+"In the above example we operate on `Box` pointers. Since these own their "
+"data exclusively, the original copy of the data structure cannot be re-used. "
+"On the other hand if a node is not changed, reusing it is very efficient."
+msgstr ""
+
+#: src/patterns/creational/fold.md:100
+msgid ""
+"If we were to operate on borrowed references, the original data structure "
+"can be reused; however, a node must be cloned even if unchanged, which can "
+"be expensive."
+msgstr ""
+
+#: src/patterns/creational/fold.md:104
+msgid ""
+"Using a reference counted pointer gives the best of both worlds - we can "
+"reuse the original data structure, and we don't need to clone unchanged "
+"nodes. However, they are less ergonomic to use and mean that the data "
+"structures cannot be mutable."
+msgstr ""
+
+#: src/patterns/creational/fold.md:109
+msgid "See also"
+msgstr ""
+
+#: src/patterns/creational/fold.md:111
+msgid ""
+"Iterators have a `fold` method, however this folds a data structure into a "
+"value, rather than into a new data structure. An iterator's `map` is more "
+"like this fold pattern."
+msgstr ""
+
+#: src/patterns/creational/fold.md:115
+msgid ""
+"In other languages, fold is usually used in the sense of Rust's iterators, "
+"rather than this pattern. Some functional languages have powerful constructs "
+"for performing flexible maps over data structures."
+msgstr ""
+
+#: src/patterns/creational/fold.md:119
+msgid ""
+"The [visitor](../behavioural/visitor.md) pattern is closely related to fold. "
+"They share the concept of walking a data structure performing an operation "
+"on each node. However, the visitor does not create a new data structure nor "
+"consume the old one."
+msgstr ""

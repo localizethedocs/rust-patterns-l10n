@@ -1,0 +1,136 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/ffi/errors.md:1
+msgid "Error Handling in FFI"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:5
+msgid ""
+"In foreign languages like C, errors are represented by return codes. "
+"However, Rust's type system allows much more rich error information to be "
+"captured and propagated through a full type."
+msgstr ""
+
+#: src/idioms/ffi/errors.md:9
+msgid ""
+"This best practice shows different kinds of error codes, and how to expose "
+"them in a usable way:"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:12
+msgid "Flat Enums should be converted to integers and returned as codes."
+msgstr ""
+
+#: src/idioms/ffi/errors.md:13
+msgid ""
+"Structured Enums should be converted to an integer code with a string error "
+"message for detail."
+msgstr ""
+
+#: src/idioms/ffi/errors.md:15
+msgid ""
+"Custom Error Types should become \"transparent\", with a C representation."
+msgstr ""
+
+#: src/idioms/ffi/errors.md:17
+msgid "Code Example"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:19
+msgid "Flat Enums"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:23
+msgid "// user attempted a write operation\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:24
+msgid "// user should read the C errno() for what it was\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:25
+msgid "// user should run a repair tool to recover it\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:35
+msgid "Structured Enums"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:42
+msgid "// message describing the issue\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:61
+msgid "\"C\""
+msgstr ""
+
+#: src/idioms/ffi/errors.md:64
+msgid ""
+"// SAFETY: we assume that the lifetime of `e` is greater than\n"
+"        // the current stack frame.\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:70
+msgid "\"cannot write to read-only database\""
+msgstr ""
+
+#: src/idioms/ffi/errors.md:73
+msgid "\"I/O Error: {e}\""
+msgstr ""
+
+#: src/idioms/ffi/errors.md:76
+msgid "\"File corrupted, run repair: {}\""
+msgstr ""
+
+#: src/idioms/ffi/errors.md:83
+msgid ""
+"// SAFETY: copying error_bytes to an allocated buffer with a '\\0'\n"
+"            // byte at the end.\n"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:99
+msgid "Custom Error Types"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:109
+msgid "/* ... */"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:111
+msgid "/* Create a second version which is exposed as a C structure */"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:128
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:130
+msgid ""
+"This ensures that the foreign language has clear access to error information "
+"while not compromising the Rust code's API at all."
+msgstr ""
+
+#: src/idioms/ffi/errors.md:133
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/ffi/errors.md:135
+msgid ""
+"It's a lot of typing, and some types may not be able to be converted easily "
+"to C."
+msgstr ""

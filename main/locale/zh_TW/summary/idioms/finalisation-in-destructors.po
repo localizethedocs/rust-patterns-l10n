@@ -1,0 +1,161 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/dtor-finally.md:1
+msgid "Finalisation in destructors"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:5
+msgid ""
+"Rust does not provide the equivalent to `finally` blocks - code that will be "
+"executed no matter how a function is exited. Instead, an object's destructor "
+"can be used to run code that must be run before exit."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:9
+msgid "Example"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:13
+msgid "// some code\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:17
+msgid "// These don't need to be defined inside the function.\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:20
+msgid "// Implement a destructor for Foo.\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:23
+msgid "\"exit\""
+msgstr ""
+
+#: src/idioms/dtor-finally.md:27
+msgid ""
+"// The destructor of _exit will run however the function `bar` is exited.\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:29
+msgid "// Implicit return with `?` operator.\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:31
+msgid "// Normal return.\n"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:36
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:38
+msgid ""
+"If a function has multiple return points, then executing code on exit "
+"becomes difficult and repetitive (and thus bug-prone). This is especially "
+"the case where return is implicit due to a macro. A common case is the `?` "
+"operator which returns if the result is an `Err`, but continues if it is "
+"`Ok`. `?` is used as an exception handling mechanism, but unlike Java (which "
+"has `finally`), there is no way to schedule code to run in both the normal "
+"and exceptional cases. Panicking will also exit a function early."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:46
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:48
+msgid ""
+"Code in destructors will (nearly) always be run - copes with panics, early "
+"returns, etc."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:51
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:53
+msgid ""
+"It is not guaranteed that destructors will run. For example, if there is an "
+"infinite loop in a function or if running a function crashes before exit. "
+"Destructors are also not run in the case of a panic in an already panicking "
+"thread. Therefore, destructors cannot be relied on as finalizers where it is "
+"absolutely essential that finalisation happens."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:59
+msgid ""
+"This pattern introduces some hard to notice, implicit code. Reading a "
+"function gives no clear indication of destructors to be run on exit. This "
+"can make debugging tricky."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:63
+msgid ""
+"Requiring an object and `Drop` impl just for finalisation is heavy on "
+"boilerplate."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:66
+msgid "Discussion"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:68
+msgid ""
+"There is some subtlety about how exactly to store the object used as a "
+"finalizer. It must be kept alive until the end of the function and must then "
+"be destroyed. The object must always be a value or uniquely owned pointer (e."
+"g., `Box<Foo>`). If a shared pointer (such as `Rc`) is used, then the "
+"finalizer can be kept alive beyond the lifetime of the function. For similar "
+"reasons, the finalizer should not be moved or returned."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:75
+msgid ""
+"The finalizer must be assigned into a variable, otherwise it will be "
+"destroyed immediately, rather than when it goes out of scope. The variable "
+"name must start with `_` if the variable is only used as a finalizer, "
+"otherwise the compiler will warn that the finalizer is never used. However, "
+"do not call the variable `_` with no suffix - in that case it will be "
+"destroyed immediately."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:81
+msgid ""
+"In Rust, destructors are run when an object goes out of scope. This happens "
+"whether we reach the end of block, there is an early return, or the program "
+"panics. When panicking, Rust unwinds the stack running destructors for each "
+"object in each stack frame. So, destructors get called even if the panic "
+"happens in a function being called."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:87
+msgid ""
+"If a destructor panics while unwinding, there is no good action to take, so "
+"Rust aborts the thread immediately, without running further destructors. "
+"This means that destructors are not absolutely guaranteed to run. It also "
+"means that you must take extra care in your destructors not to panic, since "
+"it could leave resources in an unexpected state."
+msgstr ""
+
+#: src/idioms/dtor-finally.md:93
+msgid "See also"
+msgstr ""
+
+#: src/idioms/dtor-finally.md:95
+msgid "[RAII guards](../patterns/behavioural/RAII.md)."
+msgstr ""

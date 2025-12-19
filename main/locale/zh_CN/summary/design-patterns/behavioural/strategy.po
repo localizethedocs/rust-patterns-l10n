@@ -1,0 +1,250 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/behavioural/strategy.md:1
+msgid "Strategy (aka Policy)"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:5
+msgid ""
+"The [Strategy design pattern](https://en.wikipedia.org/wiki/"
+"Strategy_pattern) is a technique that enables separation of concerns. It "
+"also allows to decouple software modules through [Dependency Inversion]"
+"(https://en.wikipedia.org/wiki/Dependency_inversion_principle)."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:10
+msgid ""
+"The basic idea behind the Strategy pattern is that, given an algorithm "
+"solving a particular problem, we define only the skeleton of the algorithm "
+"at an abstract level, and we separate the specific algorithm’s "
+"implementation into different parts."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:15
+msgid ""
+"In this way, a client using the algorithm may choose a specific "
+"implementation, while the general algorithm workflow remains the same. In "
+"other words, the abstract specification of the class does not depend on the "
+"specific implementation of the derived class, but specific implementation "
+"must adhere to the abstract specification. This is why we call it "
+"\"Dependency Inversion\"."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:21
+msgid "Motivation"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:23
+msgid ""
+"Imagine we are working on a project that generates reports every month. We "
+"need the reports to be generated in different formats (strategies), e.g., in "
+"`JSON` or `Plain Text` formats. But things vary over time, and we don't know "
+"what kind of requirement we may get in the future. For example, we may need "
+"to generate our report in a completely new format, or just modify one of the "
+"existing formats."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:30
+msgid "Example"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:32
+msgid ""
+"In this example our invariants (or abstractions) are `Formatter` and "
+"`Report`, while `Text` and `Json` are our strategy structs. These strategies "
+"have to implement the `Formatter` trait."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:48
+msgid ""
+"// Write should be used but we kept it as String to ignore error handling\n"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:50
+msgid "// backend operations...\n"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:52
+msgid "\"one\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:53
+msgid "\"two\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:54
+msgid "// generate report\n"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:63
+msgid "\"{k} {v}\\n\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:72
+msgid "'['"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:74
+msgid "r#\"{{\"{}\":\"{}\"}}\"#"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:76
+msgid "','"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:79
+msgid "// remove extra , at the end\n"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:81
+msgid "']'"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:86
+msgid "\"\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:88
+msgid "\"one 1\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:89
+msgid "\"two 2\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:91
+msgid "// reuse the same buffer\n"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:93
+msgid "r#\"{\"one\":\"1\"}\"#"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:94
+msgid "r#\"{\"two\":\"2\"}\"#"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:98
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:100
+msgid ""
+"The main advantage is separation of concerns. For example, in this case "
+"`Report` does not know anything about specific implementations of `Json` and "
+"`Text`, whereas the output implementations does not care about how data is "
+"preprocessed, stored, and fetched. The only thing they have to know is a "
+"specific trait to implement and its method defining the concrete algorithm "
+"implementation processing the result, i.e., `Formatter` and `format(...)`."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:107
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:109
+msgid ""
+"For each strategy there must be implemented at least one module, so number "
+"of modules increases with number of strategies. If there are many strategies "
+"to choose from then users have to know how strategies differ from one "
+"another."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:113
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:115
+msgid ""
+"In the previous example all strategies are implemented in a single file. "
+"Ways of providing different strategies includes:"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:118
+msgid ""
+"All in one file (as shown in this example, similar to being separated as "
+"modules)"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:120
+msgid ""
+"Separated as modules, E.g. `formatter::json` module, `formatter::text` module"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:121
+msgid "Use compiler feature flags, E.g. `json` feature, `text` feature"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:122
+msgid "Separated as crates, E.g. `json` crate, `text` crate"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:124
+msgid ""
+"Serde crate is a good example of the `Strategy` pattern in action. Serde "
+"allows [full customization](https://serde.rs/custom-serialization.html) of "
+"the serialization behavior by manually implementing `Serialize` and "
+"`Deserialize` traits for our type. For example, we could easily swap "
+"`serde_json` with `serde_cbor` since they expose similar methods. Having "
+"this makes the helper crate `serde_transcode` much more useful and ergonomic."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:131
+msgid ""
+"However, we don't need to use traits in order to design this pattern in Rust."
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:133
+msgid ""
+"The following toy example demonstrates the idea of the Strategy pattern "
+"using Rust `closures`:"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:164
+msgid "In fact, Rust already uses this idea for `Options`'s `map` method:"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:168
+msgid "\"Rust\""
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:178
+msgid "See also"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:180
+msgid "[Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern)"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:181
+msgid ""
+"[Dependency Injection](https://en.wikipedia.org/wiki/Dependency_injection)"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:182
+msgid ""
+"[Policy Based Design](https://en.wikipedia.org/wiki/Modern_C++_Design#Policy-"
+"based_design)"
+msgstr ""
+
+#: src/patterns/behavioural/strategy.md:183
+msgid ""
+"[Implementing a TCP server for Space Applications in Rust using the Strategy "
+"Pattern](https://web.archive.org/web/20231003171500/https://robamu.github.io/"
+"posts/rust-strategy-pattern/)"
+msgstr ""
