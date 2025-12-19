@@ -1,0 +1,159 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/anti_patterns/deny-warnings.md:1
+msgid "`#![deny(warnings)]`"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:3
+msgid "Description"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:5
+msgid ""
+"A well-intentioned crate author wants to ensure their code builds without "
+"warnings. So they annotate their crate root with the following:"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:8
+msgid "Example"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:12
+msgid "// All is well.\n"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:16
+msgid "Advantages"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:18
+msgid "It is short and will stop the build if anything is amiss."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:20
+msgid "Drawbacks"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:22
+msgid ""
+"By disallowing the compiler to build with warnings, a crate author opts out "
+"of Rust's famed stability. Sometimes new features or old misfeatures need a "
+"change in how things are done, thus lints are written that `warn` for a "
+"certain grace period before being turned to `deny`."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:27
+msgid ""
+"For example, it was discovered that a type could have two `impl`s with the "
+"same method. This was deemed a bad idea, but in order to make the transition "
+"smooth, the `overlapping-inherent-impls` lint was introduced to give a "
+"warning to those stumbling on this fact, before it becomes a hard error in a "
+"future release."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:32
+msgid ""
+"Also sometimes APIs get deprecated, so their use will emit a warning where "
+"before there was none."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:35
+msgid ""
+"All this conspires to potentially break the build whenever something changes."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:37
+msgid ""
+"Furthermore, crates that supply additional lints (e.g. [rust-clippy](https://"
+"github.com/rust-lang/rust-clippy)) can no longer be used unless the "
+"annotation is removed. This is mitigated with [\\--cap-lints](https://doc."
+"rust-lang.org/rustc/lints/levels.html#capping-lints). The `--cap-lints=warn` "
+"command line argument, turns all `deny` lint errors into warnings."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:42
+msgid "Alternatives"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:44
+msgid ""
+"There are two ways of tackling this problem: First, we can decouple the "
+"build setting from the code, and second, we can name the lints we want to "
+"deny explicitly."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:48
+msgid "The following command line will build with all warnings set to `deny`:"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:50
+msgid "`RUSTFLAGS=\"-D warnings\" cargo build`"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:52
+msgid ""
+"This can be done by any individual developer (or be set in a CI tool like "
+"Travis, but remember that this may break the build when something changes) "
+"without requiring a change to the code."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:56
+msgid ""
+"Alternatively, we can specify the lints that we want to `deny` in the code. "
+"Here is a list of warning lints that is (hopefully) safe to deny (as of "
+"rustc 1.48.0):"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:81
+msgid ""
+"In addition, the following `allow`ed lints may be a good idea to `deny`:"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:96
+msgid "Some may also want to add `missing-copy-implementations` to their list."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:98
+msgid ""
+"Note that we explicitly did not add the `deprecated` lint, as it is fairly "
+"certain that there will be more deprecated APIs in the future."
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:101
+msgid "See also"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:103
+msgid ""
+"[A collection of all clippy lints](https://rust-lang.github.io/rust-clippy/"
+"master)"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:104
+msgid ""
+"[deprecate attribute](https://doc.rust-lang.org/reference/attributes."
+"html#deprecation) documentation"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:105
+msgid ""
+"Type `rustc -W help` for a list of lints on your system. Also type `rustc --"
+"help` for a general list of options"
+msgstr ""
+
+#: src/anti_patterns/deny-warnings.md:107
+msgid ""
+"[rust-clippy](https://github.com/rust-lang/rust-clippy) is a collection of "
+"lints for better Rust code"
+msgstr ""

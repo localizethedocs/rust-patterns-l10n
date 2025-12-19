@@ -1,0 +1,231 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/ffi/wrappers.md:1
+msgid "Type Consolidation into Wrappers"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:5
+msgid ""
+"This pattern is designed to allow gracefully handling multiple related "
+"types, while minimizing the surface area for memory unsafety."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:8
+msgid ""
+"One of the cornerstones of Rust's aliasing rules is lifetimes. This ensures "
+"that many patterns of access between types can be memory safe, data race "
+"safety included."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:12
+msgid ""
+"However, when Rust types are exported to other languages, they are usually "
+"transformed into pointers. In Rust, a pointer means \"the user manages the "
+"lifetime of the pointee.\" It is their responsibility to avoid memory "
+"unsafety."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:16
+msgid ""
+"Some level of trust in the user code is thus required, notably around use-"
+"after-free which Rust can do nothing about. However, some API designs place "
+"higher burdens than others on the code written in the other language."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:20
+msgid ""
+"The lowest risk API is the \"consolidated wrapper\", where all possible "
+"interactions with an object are folded into a \"wrapper type\", while "
+"keeping the Rust API clean."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:24
+msgid "Code Example"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:26
+msgid ""
+"To understand this, let us look at a classic example of an API to export: "
+"iteration through a collection."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:29
+msgid "That API looks like this:"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:31
+msgid "The iterator is initialized with `first_key`."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:32
+msgid "Each call to `next_key` will advance the iterator."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:33
+msgid "Calls to `next_key` if the iterator is at the end will do nothing."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:34
+msgid ""
+"As noted above, the iterator is \"wrapped into\" the collection (unlike the "
+"native Rust API)."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:37
+msgid ""
+"If the iterator implements `nth()` efficiently, then it is possible to make "
+"it ephemeral to each function call:"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:62
+msgid "As a result, the wrapper is simple and contains no `unsafe` code."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:64
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:66
+msgid ""
+"This makes APIs safer to use, avoiding issues with lifetimes between types. "
+"See [Object-Based APIs](./export.md) for more on the advantages and pitfalls "
+"this avoids."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:70
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:72
+msgid ""
+"Often, wrapping types is quite difficult, and sometimes a Rust API "
+"compromise would make things easier."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:75
+msgid ""
+"As an example, consider an iterator which does not efficiently implement "
+"`nth()`. It would definitely be worth putting in special logic to make the "
+"object handle iteration internally, or to support a different access pattern "
+"efficiently that only the Foreign Function API will use."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:80
+msgid "Trying to Wrap Iterators (and Failing)"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:82
+msgid ""
+"To wrap any type of iterator into the API correctly, the wrapper would need "
+"to do what a C version of the code would do: erase the lifetime of the "
+"iterator, and manage it manually."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:86
+msgid "Suffice it to say, this is _incredibly_ difficult."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:88
+msgid "Here is an illustration of just _one_ pitfall."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:90
+msgid "A first version of `MySetWrapper` would look like this:"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:96
+msgid "// created from a transmuted Box<KeysIter + 'self>\n"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:101
+msgid ""
+"With `transmute` being used to extend a lifetime, and a pointer to hide it, "
+"it's ugly already. But it gets even worse: _any other operation can cause "
+"Rust `undefined behaviour`_."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:105
+msgid ""
+"Consider that the `MySet` in the wrapper could be manipulated by other "
+"functions during iteration, such as storing a new value to the key it was "
+"iterating over. The API doesn't discourage this, and in fact some similar C "
+"libraries expect it."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:109
+msgid "A simple implementation of `myset_store` would be:"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:114
+msgid "// other module content\n"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:117
+msgid "// DO NOT USE THIS CODE. IT IS UNSAFE TO DEMONSTRATE A PROBLEM.\n"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:120
+msgid "// SAFETY: whoops, UB occurs in here!\n"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:124
+msgid "/* ...check and cast key and value data... */"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:134
+msgid ""
+"If the iterator exists when this function is called, we have violated one of "
+"Rust's aliasing rules. According to Rust, the mutable reference in this "
+"block must have _exclusive_ access to the object. If the iterator simply "
+"exists, it's not exclusive, so we have `undefined behaviour`! [^1]"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:139
+msgid ""
+"To avoid this, we must have a way of ensuring that mutable reference really "
+"is exclusive. That basically means clearing out the iterator's shared "
+"reference while it exists, and then reconstructing it. In most cases, that "
+"will still be less efficient than the C version."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:144
+msgid ""
+"Some may ask: how can C do this more efficiently? The answer is, it cheats. "
+"Rust's aliasing rules are the problem, and C simply ignores them for its "
+"pointers. In exchange, it is common to see code that is declared in the "
+"manual as \"not thread safe\" under some or all circumstances. In fact, the "
+"[GNU C library](https://manpages.debian.org/buster/manpages/attributes.7.en."
+"html) has an entire lexicon dedicated to concurrent behavior!"
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:151
+msgid ""
+"Rust would rather make everything memory safe all the time, for both safety "
+"and optimizations that C code cannot attain. Being denied access to certain "
+"shortcuts is the price Rust programmers need to pay."
+msgstr ""
+
+#: src/patterns/ffi/wrappers.md:155
+msgid ""
+"For the C programmers out there scratching their heads, the iterator need "
+"not be read _during_ this code to cause the UB. The exclusivity rule also "
+"enables compiler optimizations which may cause inconsistent observations by "
+"the iterator's shared reference (e.g. stack spills or reordering "
+"instructions for efficiency). These observations may happen _any time after_ "
+"the mutable reference is created."
+msgstr ""

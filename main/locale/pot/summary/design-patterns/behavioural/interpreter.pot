@@ -1,0 +1,184 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/behavioural/interpreter.md:1
+msgid "Interpreter"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:5
+msgid ""
+"If a problem occurs very often and requires long and repetitive steps to "
+"solve it, then the problem instances might be expressed in a simple language "
+"and an interpreter object could solve it by interpreting the sentences "
+"written in this simple language."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:10
+msgid "Basically, for any kind of problems we define:"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:12
+msgid ""
+"A [domain specific language](https://en.wikipedia.org/wiki/Domain-"
+"specific_language),"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:14
+msgid "A grammar for this language,"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:15
+msgid "An interpreter that solves the problem instances."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:17
+msgid "Motivation"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:19
+msgid ""
+"Our goal is to translate simple mathematical expressions into postfix "
+"expressions (or [Reverse Polish notation](https://en.wikipedia.org/wiki/"
+"Reverse_Polish_notation)) For simplicity, our expressions consist of ten "
+"digits `0`, ..., `9` and two operations `+`, `-`. For example, the "
+"expression `2 + 4` is translated into `2 4 +`."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:26
+msgid "Context Free Grammar for our problem"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:28
+msgid ""
+"Our task is translating infix expressions into postfix ones. Let's define a "
+"context free grammar for a set of infix expressions over `0`, ..., `9`, `+`, "
+"and `-`, where:"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:32
+msgid "Terminal symbols: `0`, `...`, `9`, `+`, `-`"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:33
+msgid "Non-terminal symbols: `exp`, `term`"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:34
+msgid "Start symbol is `exp`"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:35
+msgid "And the following are production rules"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:44
+msgid ""
+"**NOTE:** This grammar should be further transformed depending on what we "
+"are going to do with it. For example, we might need to remove left "
+"recursion. For more details please see [Compilers: Principles,Techniques, "
+"and Tools](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,"
+"_and_Tools) (aka Dragon Book)."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:50
+msgid "Solution"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:52
+msgid ""
+"We simply implement a recursive descent parser. For simplicity's sake, the "
+"code panics when an expression is syntactically wrong (for example `2-34` or "
+"`2+5-` are wrong according to the grammar definition)."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:74
+msgid "'+'"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:74
+msgid "'-'"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:78
+msgid "\"Unexpected symbol '{op}'\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:86
+msgid "\"Unexpected symbol '{ch}'\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:87
+msgid "\"Unexpected end of string\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:93
+msgid "\"2+3\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:96
+msgid "\"23+\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:98
+msgid "\"1-2+3-4\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:101
+msgid "\"12-3+4-\""
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:105
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:107
+msgid ""
+"There may be a wrong perception that the Interpreter design pattern is about "
+"design grammars for formal languages and implementation of parsers for these "
+"grammars. In fact, this pattern is about expressing problem instances in a "
+"more specific way and implementing functions/classes/structs that solve "
+"these problem instances. Rust language has `macro_rules!` that allow us to "
+"define special syntax and rules on how to expand this syntax into source "
+"code."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:114
+msgid ""
+"In the following example we create a simple `macro_rules!` that computes "
+"[Euclidean length](https://en.wikipedia.org/wiki/Euclidean_distance) of `n` "
+"dimensional vectors. Writing `norm!(x,1,2)` might be easier to express and "
+"more efficient than packing `x,1,2` into a `Vec` and calling a function "
+"computing the length."
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:144
+msgid "See also"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:146
+msgid ""
+"[Interpreter pattern](https://en.wikipedia.org/wiki/Interpreter_pattern)"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:147
+msgid ""
+"[Context free grammar](https://en.wikipedia.org/wiki/Context-free_grammar)"
+msgstr ""
+
+#: src/patterns/behavioural/interpreter.md:148
+msgid "[macro_rules!](https://doc.rust-lang.org/rust-by-example/macros.html)"
+msgstr ""

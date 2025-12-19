@@ -1,0 +1,109 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/structural/small-crates.md:1
+msgid "Prefer small crates"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:5
+msgid "Prefer small crates that do one thing well."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:7
+msgid ""
+"Cargo and crates.io make it easy to add third-party libraries, much more so "
+"than in say C or C++. Moreover, since packages on crates.io cannot be edited "
+"or removed after publication, any build that works now should continue to "
+"work in the future. We should take advantage of this tooling, and use "
+"smaller, more fine-grained dependencies."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:13
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:15
+msgid "Small crates are easier to understand, and encourage more modular code."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:16
+msgid ""
+"Crates allow for re-using code between projects. For example, the `url` "
+"crate was developed as part of the Servo browser engine, but has since found "
+"wide use outside the project."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:19
+msgid ""
+"Since the compilation unit of Rust is the crate, splitting a project into "
+"multiple crates can allow more of the code to be built in parallel."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:22
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:24
+msgid ""
+"This can lead to \"dependency hell\", when a project depends on multiple "
+"conflicting versions of a crate at the same time. For example, the `url` "
+"crate has both versions 1.0 and 0.5. Since the `Url` from `url:1.0` and the "
+"`Url` from `url:0.5` are different types, an HTTP client that uses `url:0.5` "
+"would not accept `Url` values from a web scraper that uses `url:1.0`."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:29
+msgid ""
+"Packages on crates.io are not curated. A crate may be poorly written, have "
+"unhelpful documentation, or be outright malicious."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:31
+msgid ""
+"Two small crates may be less optimized than one large one, since the "
+"compiler does not perform link-time optimization (LTO) by default."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:34
+msgid "Examples"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:36
+msgid ""
+"The [`url`](https://crates.io/crates/url) crate provides tools for working "
+"with URLs."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:39
+msgid ""
+"The [`num_cpus`](https://crates.io/crates/num_cpus) crate provides a "
+"function to query the number of CPUs on a machine."
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:42
+msgid ""
+"The [`ref_slice`](https://crates.io/crates/ref_slice) crate provides "
+"functions for converting `&T` to `&[T]`. (Historical example)"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:45
+msgid "See also"
+msgstr ""
+
+#: src/patterns/structural/small-crates.md:47
+msgid "[crates.io: The Rust community crate host](https://crates.io/)"
+msgstr ""

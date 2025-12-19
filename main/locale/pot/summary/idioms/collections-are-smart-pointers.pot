@@ -1,0 +1,131 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-19T08:35:13Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: en\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/deref.md:1
+msgid "Collections are smart pointers"
+msgstr ""
+
+#: src/idioms/deref.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/deref.md:5
+msgid ""
+"Use the [`Deref`](https://doc.rust-lang.org/std/ops/trait.Deref.html) trait "
+"to treat collections like smart pointers, offering owning and borrowed views "
+"of data."
+msgstr ""
+
+#: src/idioms/deref.md:9
+msgid "Example"
+msgstr ""
+
+#: src/idioms/deref.md:16 src/idioms/deref.md:23
+msgid "//..\n"
+msgstr ""
+
+#: src/idioms/deref.md:28
+msgid ""
+"A `Vec<T>` is an owning collection of `T`s, while a slice (`&[T]`) is a "
+"borrowed collection of `T`s. Implementing `Deref` for `Vec` allows implicit "
+"dereferencing from `&Vec<T>` to `&[T]` and includes the relationship in auto-"
+"dereferencing searches. Most methods you might expect to be implemented for "
+"`Vec`s are instead implemented for slices."
+msgstr ""
+
+#: src/idioms/deref.md:34
+msgid "Also `String` and `&str` have a similar relation."
+msgstr ""
+
+#: src/idioms/deref.md:36
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/deref.md:38
+msgid ""
+"Ownership and borrowing are key aspects of the Rust language. Data "
+"structures must account for these semantics properly to give a good user "
+"experience. When implementing a data structure that owns its data, offering "
+"a borrowed view of that data allows for more flexible APIs."
+msgstr ""
+
+#: src/idioms/deref.md:43
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/deref.md:45
+msgid ""
+"Most methods can be implemented only for the borrowed view, they are then "
+"implicitly available for the owning view."
+msgstr ""
+
+#: src/idioms/deref.md:48
+msgid "Gives clients a choice between borrowing or taking ownership of data."
+msgstr ""
+
+#: src/idioms/deref.md:50
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/deref.md:52
+msgid ""
+"Methods and traits only available via dereferencing are not taken into "
+"account when bounds checking, so generic programming with data structures "
+"using this pattern can get complex (see the `Borrow` and `AsRef` traits, "
+"etc.)."
+msgstr ""
+
+#: src/idioms/deref.md:56
+msgid "Discussion"
+msgstr ""
+
+#: src/idioms/deref.md:58
+msgid ""
+"Smart pointers and collections are analogous: a smart pointer points to a "
+"single object, whereas a collection points to many objects. From the point "
+"of view of the type system, there is little difference between the two. A "
+"collection owns its data if the only way to access each datum is via the "
+"collection and the collection is responsible for deleting the data (even in "
+"cases of shared ownership, some kind of borrowed view may be appropriate). "
+"If a collection owns its data, it is usually useful to provide a view of the "
+"data as borrowed so that it can be referenced multiple times."
+msgstr ""
+
+#: src/idioms/deref.md:67
+msgid ""
+"Most smart pointers (e.g., `Foo<T>`) implement `Deref<Target=T>`. However, "
+"collections will usually dereference to a custom type. `[T]` and `str` have "
+"some language support, but in the general case, this is not necessary. "
+"`Foo<T>` can implement `Deref<Target=Bar<T>>` where `Bar` is a dynamically "
+"sized type and `&Bar<T>` is a borrowed view of the data in `Foo<T>`."
+msgstr ""
+
+#: src/idioms/deref.md:73
+msgid ""
+"Commonly, ordered collections will implement `Index` for `Range`s to provide "
+"slicing syntax. The target will be the borrowed view."
+msgstr ""
+
+#: src/idioms/deref.md:76
+msgid "See also"
+msgstr ""
+
+#: src/idioms/deref.md:78
+msgid "[Deref polymorphism anti-pattern](../anti_patterns/deref.md)."
+msgstr ""
+
+#: src/idioms/deref.md:79
+msgid ""
+"[Documentation for `Deref` trait](https://doc.rust-lang.org/std/ops/trait."
+"Deref.html)."
+msgstr ""
