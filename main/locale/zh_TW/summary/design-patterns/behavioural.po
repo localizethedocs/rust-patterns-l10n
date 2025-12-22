@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/patterns/behavioural/intro.md:1
 msgid "Behavioural Patterns"
-msgstr ""
+msgstr "行為型模式"
 
 #: src/patterns/behavioural/intro.md:3
 msgid "From [Wikipedia](https://en.wikipedia.org/wiki/Behavioral_pattern):"

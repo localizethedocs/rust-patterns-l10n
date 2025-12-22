@@ -13,7 +13,7 @@ msgstr ""
 
 #: src/patterns/structural/intro.md:1
 msgid "Structural Patterns"
-msgstr ""
+msgstr "結構型模式"
 
 #: src/patterns/structural/intro.md:3
 msgid "From [Wikipedia](https://en.wikipedia.org/wiki/Structural_pattern):"
