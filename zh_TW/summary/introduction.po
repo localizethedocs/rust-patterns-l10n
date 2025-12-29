@@ -1,0 +1,113 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:33Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/intro.md:1
+msgid "Introduction"
+msgstr "介紹"
+
+#: src/intro.md:3
+msgid "Participation"
+msgstr ""
+
+#: src/intro.md:5
+msgid ""
+"If you are interested in contributing to this book, check out the "
+"[contribution guidelines](https://github.com/rust-unofficial/patterns/blob/"
+"master/CONTRIBUTING.md)."
+msgstr ""
+
+#: src/intro.md:8
+msgid "News"
+msgstr ""
+
+#: src/intro.md:10
+msgid ""
+"**2025-12-14**: New pattern added: [Use custom traits to avoid complex type "
+"bounds](./patterns/structural/trait-for-bounds.md)"
+msgstr ""
+
+#: src/intro.md:12
+msgid ""
+"**2024-03-17**: You can now download the [book in PDF format](https://rust-"
+"unofficial.github.io/patterns/rust-design-patterns.pdf)."
+msgstr ""
+
+#: src/intro.md:15
+msgid "Design patterns"
+msgstr "設計模式"
+
+#: src/intro.md:17
+msgid ""
+"In software development, we often come across problems that share "
+"similarities regardless of the environment they appear in. Although the "
+"implementation details are crucial to solve the task at hand, we may "
+"abstract from these particularities to find the common practices that are "
+"generically applicable."
+msgstr ""
+
+#: src/intro.md:22
+msgid ""
+"Design patterns are a collection of reusable and tested solutions to "
+"recurring problems in engineering. They make our software more modular, "
+"maintainable, and extensible. Moreover, these patterns provide a common "
+"language for developers, making them an excellent tool for effective "
+"communication when problem-solving in teams."
+msgstr ""
+
+#: src/intro.md:28
+msgid ""
+"Keep in mind: Each pattern comes with its own set of trade-offs. It's "
+"crucial to focus on why you choose a particular pattern rather than just on "
+"how to implement it.[^1]"
+msgstr ""
+
+#: src/intro.md:32
+msgid "Design patterns in Rust"
+msgstr ""
+
+#: src/intro.md:34
+msgid ""
+"Rust is not object-oriented, and the combination of all its characteristics, "
+"such as functional elements, a strong type system, and the borrow checker, "
+"makes it unique. Because of this, Rust design patterns vary with respect to "
+"other traditional object-oriented programming languages. That's why we "
+"decided to write this book. We hope you enjoy reading it! The book is "
+"divided in three main chapters:"
+msgstr ""
+
+#: src/intro.md:41
+msgid ""
+"[Idioms](./idioms/index.md): guidelines to follow when coding. They are the "
+"social norms of the community. You should break them only if you have a good "
+"reason for it."
+msgstr ""
+
+#: src/intro.md:44
+msgid ""
+"[Design patterns](./patterns/index.md): methods to solve common problems "
+"when coding."
+msgstr ""
+
+#: src/intro.md:46
+msgid ""
+"[Anti-patterns](./anti_patterns/index.md): methods to solve common problems "
+"when coding. However, while design patterns give us benefits, anti-patterns "
+"create more problems."
+msgstr ""
+
+#: src/intro.md:50
+msgid ""
+"<https://www.infoq.com/podcasts/software-architecture-hard-parts/> ([Archive]"
+"(https://web.archive.org/web/20240124025806/https://www.infoq.com/podcasts/"
+"software-architecture-hard-parts/))"
+msgstr ""
