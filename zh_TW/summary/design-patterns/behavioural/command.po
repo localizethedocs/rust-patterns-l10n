@@ -1,0 +1,167 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/behavioural/command.md:1
+msgid "Command"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:5
+msgid ""
+"The basic idea of the Command pattern is to separate out actions into its "
+"own objects and pass them as parameters."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:8
+msgid "Motivation"
+msgstr "動機"
+
+#: src/patterns/behavioural/command.md:10
+msgid ""
+"Suppose we have a sequence of actions or transactions encapsulated as "
+"objects. We want these actions or commands to be executed or invoked in some "
+"order later at different time. These commands may also be triggered as a "
+"result of some event. For example, when a user pushes a button, or on "
+"arrival of a data packet. In addition, these commands might be undoable. "
+"This may come in useful for operations of an editor. We might want to store "
+"logs of executed commands so that we could reapply the changes later if the "
+"system crashes."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:18
+msgid "Example"
+msgstr "範例"
+
+#: src/patterns/behavioural/command.md:20
+msgid ""
+"Define two database operations `create table` and `add field`. Each of these "
+"operations is a command which knows how to undo the command, e.g., `drop "
+"table` and `remove field`. When a user invokes a database migration "
+"operation then each command is executed in the defined order, and when the "
+"user invokes the rollback operation then the whole set of commands is "
+"invoked in reverse order."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:26
+msgid "Approach: Using trait objects"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:28
+msgid ""
+"We define a common trait which encapsulates our command with two operations "
+"`execute` and `rollback`. All command `structs` must implement this trait."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:40
+#: src/patterns/behavioural/command.md:90
+#: src/patterns/behavioural/command.md:143
+#: src/patterns/behavioural/command.md:145
+#: src/patterns/behavioural/command.md:196
+#: src/patterns/behavioural/command.md:198
+msgid "\"create table\""
+msgstr ""
+
+#: src/patterns/behavioural/command.md:43
+#: src/patterns/behavioural/command.md:91
+#: src/patterns/behavioural/command.md:143
+#: src/patterns/behavioural/command.md:146
+#: src/patterns/behavioural/command.md:196
+#: src/patterns/behavioural/command.md:199
+msgid "\"drop table\""
+msgstr ""
+
+#: src/patterns/behavioural/command.md:50
+#: src/patterns/behavioural/command.md:90
+#: src/patterns/behavioural/command.md:134
+#: src/patterns/behavioural/command.md:145
+#: src/patterns/behavioural/command.md:187
+#: src/patterns/behavioural/command.md:198
+msgid "\"add field\""
+msgstr ""
+
+#: src/patterns/behavioural/command.md:53
+#: src/patterns/behavioural/command.md:91
+#: src/patterns/behavioural/command.md:138
+#: src/patterns/behavioural/command.md:146
+#: src/patterns/behavioural/command.md:191
+#: src/patterns/behavioural/command.md:199
+msgid "\"remove field\""
+msgstr ""
+
+#: src/patterns/behavioural/command.md:76
+msgid "// reverse iterator's direction\n"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:95
+msgid "Approach: Using function pointers"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:97
+msgid ""
+"We could follow another approach by creating each individual command as a "
+"different function and store function pointers to invoke these functions "
+"later at a different time. Since function pointers implement all three "
+"traits `Fn`, `FnMut`, and `FnOnce` we could as well pass and store closures "
+"instead of function pointers."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:150
+msgid "Approach: Using `Fn` trait objects"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:152
+msgid ""
+"Finally, instead of defining a common command trait we could store each "
+"command implementing the `Fn` trait separately in vectors."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:203
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:205
+msgid ""
+"If our commands are small and may be defined as functions or passed as a "
+"closure then using function pointers might be preferable since it does not "
+"exploit dynamic dispatch. But if our command is a whole struct with a bunch "
+"of functions and variables defined as separated module then using trait "
+"objects would be more suitable. A case of application can be found in "
+"[`actix`](https://actix.rs/), which uses trait objects when it registers a "
+"handler function for routes. In case of using `Fn` trait objects we can "
+"create and use commands in the same way as we used in case of function "
+"pointers."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:214
+msgid ""
+"As performance, there is always a trade-off between performance and code "
+"simplicity and organisation. Static dispatch gives faster performance, while "
+"dynamic dispatch provides flexibility when we structure our application."
+msgstr ""
+
+#: src/patterns/behavioural/command.md:218
+msgid "See also"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:220
+msgid "[Command pattern](https://en.wikipedia.org/wiki/Command_pattern)"
+msgstr ""
+
+#: src/patterns/behavioural/command.md:222
+msgid ""
+"[Another example for the `command` pattern](https://web.archive.org/"
+"web/20210223131236/https://chercher.tech/rust/command-design-pattern-rust)"
+msgstr ""

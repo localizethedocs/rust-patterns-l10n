@@ -1,0 +1,26 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/anti_patterns/index.md:1
+msgid "Anti-patterns"
+msgstr ""
+
+#: src/anti_patterns/index.md:3
+msgid ""
+"An [anti-pattern](https://en.wikipedia.org/wiki/Anti-pattern) is a solution "
+"to a \"recurring problem that is usually ineffective and risks being highly "
+"counterproductive\". Just as valuable as knowing how to solve a problem, is "
+"knowing how _not_ to solve it. Anti-patterns give us great counter-examples "
+"to consider relative to design patterns. Anti-patterns are not confined to "
+"code. For example, a process can be an anti-pattern, too."
+msgstr ""

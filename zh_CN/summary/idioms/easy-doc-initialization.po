@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/rustdoc-init.md:1
+msgid "Easy doc initialization"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:5
+msgid ""
+"If a struct takes significant effort to initialize when writing docs, it can "
+"be quicker to wrap your example with a helper function which takes the "
+"struct as an argument."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:9
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:11
+msgid ""
+"Sometimes there is a struct with multiple or complicated parameters and "
+"several methods. Each of these methods should have examples."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:14
+msgid "For example:"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:23
+msgid ""
+"/// Sends a request over the connection.\n"
+"    ///\n"
+"    /// # Example\n"
+"    /// ```no_run\n"
+"    /// # // Boilerplate are required to get an example working.\n"
+"    /// # let stream = TcpStream::connect(\"127.0.0.1:34254\");\n"
+"    /// # let connection = Connection { name: \"foo\".to_owned(), stream };\n"
+"    /// # let request = Request::new(\"RequestId\", RequestType::Get, "
+"\"payload\");\n"
+"    /// let response = connection.send_request(request);\n"
+"    /// assert!(response.is_ok());\n"
+"    /// ```\n"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:35 src/idioms/rustdoc-init.md:40
+#: src/idioms/rustdoc-init.md:68
+msgid "// ...\n"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:38
+msgid "/// Oh no, all that boilerplate needs to be repeated here!\n"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:45
+msgid "Example"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:47
+msgid ""
+"Instead of typing all of this boilerplate to create a `Connection` and "
+"`Request`, it is easier to just create a wrapping helper function which "
+"takes them as arguments:"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:58
+msgid ""
+"/// Sends a request over the connection.\n"
+"    ///\n"
+"    /// # Example\n"
+"    /// ```\n"
+"    /// # fn call_send(connection: Connection, request: Request) {\n"
+"    /// let response = connection.send_request(request);\n"
+"    /// assert!(response.is_ok());\n"
+"    /// # }\n"
+"    /// ```\n"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:73
+msgid ""
+"**Note** in the above example the line `assert!(response.is_ok());` will not "
+"actually run while testing because it is inside a function which is never "
+"invoked."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:77
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:79
+msgid "This is much more concise and avoids repetitive code in examples."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:81
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:83
+msgid ""
+"As example is in a function, the code will not be tested. Though it will "
+"still be checked to make sure it compiles when running a `cargo test`. So "
+"this pattern is most useful when you need `no_run`. With this, you do not "
+"need to add `no_run`."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:88
+msgid "Discussion"
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:90
+msgid "If assertions are not required this pattern works well."
+msgstr ""
+
+#: src/idioms/rustdoc-init.md:92
+msgid ""
+"If they are, an alternative can be to create a public method to create a "
+"helper instance which is annotated with `#[doc(hidden)]` (so that users "
+"won't see it). Then this method can be called inside of rustdoc because it "
+"is part of the crate's public API."
+msgstr ""
