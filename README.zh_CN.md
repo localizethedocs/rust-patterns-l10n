@@ -1,5 +1,5 @@
 <div align="center">
-<h1 id="localization-of-rust-design-patterns">Localization of Rust Design Patterns</h1>
+<h1 id="localization-of-rust-design-patterns">Rust 设计模式的本地化</h1>
 </div>
 
 <details><summary><strong>切换语言</strong></summary>
