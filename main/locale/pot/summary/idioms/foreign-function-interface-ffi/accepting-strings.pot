@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rust Design Patterns\n"
-"POT-Creation-Date: 2025-12-22T08:31:33Z\n"
+"POT-Creation-Date: 2026-01-12T08:33:09Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -170,7 +170,7 @@ msgstr ""
 #: src/idioms/ffi/accepting-strings.md:120
 msgid ""
 "Due to the extensive arithmetic required, there is a bug in this version "
-"that cases Rust `undefined behaviour`."
+"that causes Rust `undefined behaviour`."
 msgstr ""
 
 #: src/idioms/ffi/accepting-strings.md:123
