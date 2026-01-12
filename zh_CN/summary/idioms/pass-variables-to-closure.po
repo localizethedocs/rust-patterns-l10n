@@ -1,0 +1,81 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/pass-var-to-closure.md:1
+msgid "Pass variables to closure"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:5
+msgid ""
+"By default, closures capture their environment by borrowing. Or you can use "
+"a `move`\\-closure to move the whole environment. However, often you want to "
+"move just some variables to the closure, give it a copy of some data, pass "
+"by reference, or perform some other transformation."
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:10
+msgid "Use variable rebinding in a separate scope for that."
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:12
+msgid "Example"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:14
+msgid "Use"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:23
+msgid "// `num1` is moved\n"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:24
+msgid "// `num2` is cloned\n"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:25
+msgid "// `num3` is borrowed\n"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:32
+msgid "instead of"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:48
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:50
+msgid ""
+"Copied data are grouped together with the closure definition, so their "
+"purpose is more clear, and they will be dropped immediately even if they are "
+"not consumed by the closure."
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:54
+msgid ""
+"The closure uses the same variable names as the surrounding code, whether "
+"data are copied or moved."
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:57
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/pass-var-to-closure.md:59
+msgid "Additional indentation of the closure body."
+msgstr ""

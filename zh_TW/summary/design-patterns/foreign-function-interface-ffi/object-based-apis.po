@@ -1,0 +1,398 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/ffi/export.md:1
+msgid "Object-Based APIs"
+msgstr ""
+
+#: src/patterns/ffi/export.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/ffi/export.md:5
+msgid ""
+"When designing APIs in Rust which are exposed to other languages, there are "
+"some important design principles which are contrary to normal Rust API "
+"design:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:8
+msgid ""
+"All Encapsulated types should be _owned_ by Rust, _managed_ by the user, and "
+"_opaque_."
+msgstr ""
+
+#: src/patterns/ffi/export.md:10
+msgid ""
+"All Transactional data types should be _owned_ by the user, and "
+"_transparent_."
+msgstr ""
+
+#: src/patterns/ffi/export.md:12
+msgid ""
+"All library behavior should be functions acting upon Encapsulated types."
+msgstr ""
+
+#: src/patterns/ffi/export.md:13
+msgid ""
+"All library behavior should be encapsulated into types not based on "
+"structure, but _provenance/lifetime_."
+msgstr ""
+
+#: src/patterns/ffi/export.md:16
+msgid "Motivation"
+msgstr "動機"
+
+#: src/patterns/ffi/export.md:18
+msgid ""
+"Rust has built-in FFI support to other languages. It does this by providing "
+"a way for crate authors to provide C-compatible APIs through different ABIs "
+"(though that is unimportant to this practice)."
+msgstr ""
+
+#: src/patterns/ffi/export.md:22
+msgid ""
+"Well-designed Rust FFI follows C API design principles, while compromising "
+"the design in Rust as little as possible. There are three goals with any "
+"foreign API:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:26
+msgid "Make it easy to use in the target language."
+msgstr ""
+
+#: src/patterns/ffi/export.md:27
+msgid ""
+"Avoid the API dictating internal unsafety on the Rust side as much as "
+"possible."
+msgstr ""
+
+#: src/patterns/ffi/export.md:29
+msgid ""
+"Keep the potential for memory unsafety and Rust `undefined behaviour` as "
+"small as possible."
+msgstr ""
+
+#: src/patterns/ffi/export.md:32
+msgid ""
+"Rust code must trust the memory safety of the foreign language beyond a "
+"certain point. However, every bit of `unsafe` code on the Rust side is an "
+"opportunity for bugs, or to exacerbate `undefined behaviour`."
+msgstr ""
+
+#: src/patterns/ffi/export.md:36
+msgid ""
+"For example, if a pointer provenance is wrong, that may be a segfault due to "
+"invalid memory access. But if it is manipulated by unsafe code, it could "
+"become full-blown heap corruption."
+msgstr ""
+
+#: src/patterns/ffi/export.md:40
+msgid ""
+"The Object-Based API design allows for writing shims that have good memory "
+"safety characteristics, and a clean boundary of what is safe and what is "
+"`unsafe`."
+msgstr ""
+
+#: src/patterns/ffi/export.md:44
+msgid "Code Example"
+msgstr ""
+
+#: src/patterns/ffi/export.md:46
+msgid ""
+"The POSIX standard defines the API to access an on-file database, known as "
+"[DBM](https://web.archive.org/web/20210105035602/https://www.mankier.com/0p/"
+"ndbm.h). It is an excellent example of an \"object-based\" API."
+msgstr ""
+
+#: src/patterns/ffi/export.md:50
+msgid ""
+"Here is the definition in C, which hopefully should be easy to read for "
+"those involved in FFI. The commentary below should help explain it for those "
+"who miss the subtleties."
+msgstr ""
+
+#: src/patterns/ffi/export.md:69
+msgid "This API defines two types: `DBM` and `datum`."
+msgstr ""
+
+#: src/patterns/ffi/export.md:71
+msgid ""
+"The `DBM` type was called an \"encapsulated\" type above. It is designed to "
+"contain internal state, and acts as an entry point for the library's "
+"behavior."
+msgstr ""
+
+#: src/patterns/ffi/export.md:74
+msgid ""
+"It is completely opaque to the user, who cannot create a `DBM` themselves "
+"since they don't know its size or layout. Instead, they must call "
+"`dbm_open`, and that only gives them _a pointer to one_."
+msgstr ""
+
+#: src/patterns/ffi/export.md:78
+msgid ""
+"This means all `DBM`s are \"owned\" by the library in a Rust sense. The "
+"internal state of unknown size is kept in memory controlled by the library, "
+"not the user. The user can only manage its life cycle with `open` and "
+"`close`, and perform operations on it with the other functions."
+msgstr ""
+
+#: src/patterns/ffi/export.md:83
+msgid ""
+"The `datum` type was called a \"transactional\" type above. It is designed "
+"to facilitate the exchange of information between the library and its user."
+msgstr ""
+
+#: src/patterns/ffi/export.md:86
+msgid ""
+"The database is designed to store \"unstructured data\", with no pre-defined "
+"length or meaning. As a result, the `datum` is the C equivalent of a Rust "
+"slice: a bunch of bytes, and a count of how many there are. The main "
+"difference is that there is no type information, which is what `void` "
+"indicates."
+msgstr ""
+
+#: src/patterns/ffi/export.md:91
+msgid ""
+"Keep in mind that this header is written from the library's point of view. "
+"The user likely has some type they are using, which has a known size. But "
+"the library does not care, and by the rules of C casting, any type behind a "
+"pointer can be cast to `void`."
+msgstr ""
+
+#: src/patterns/ffi/export.md:96
+msgid ""
+"As noted earlier, this type is _transparent_ to the user. But also, this "
+"type is _owned_ by the user. This has subtle ramifications, due to that "
+"pointer inside it. The question is, who owns the memory that pointer points "
+"to?"
+msgstr ""
+
+#: src/patterns/ffi/export.md:100
+msgid ""
+"The answer for best memory safety is, \"the user\". But in cases such as "
+"retrieving a value, the user does not know how to allocate it correctly "
+"(since they don't know how long the value is). In this case, the library "
+"code is expected to use the heap that the user has access to -- such as the "
+"C library `malloc` and `free` -- and then _transfer ownership_ in the Rust "
+"sense."
+msgstr ""
+
+#: src/patterns/ffi/export.md:106
+msgid ""
+"This may all seem speculative, but this is what a pointer means in C. It "
+"means the same thing as Rust: \"user defined lifetime.\" The user of the "
+"library needs to read the documentation in order to use it correctly. That "
+"said, there are some decisions that have fewer or greater consequences if "
+"users do it wrong. Minimizing those are what this best practice is about, "
+"and the key is to _transfer ownership of everything that is transparent_."
+msgstr ""
+
+#: src/patterns/ffi/export.md:113
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/ffi/export.md:115
+msgid ""
+"This minimizes the number of memory safety guarantees the user must uphold "
+"to a relatively small number:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:118
+msgid ""
+"Do not call any function with a pointer not returned by `dbm_open` (invalid "
+"access or corruption)."
+msgstr ""
+
+#: src/patterns/ffi/export.md:120
+msgid "Do not call any function on a pointer after close (use after free)."
+msgstr ""
+
+#: src/patterns/ffi/export.md:121
+msgid ""
+"The `dptr` on any `datum` must be `NULL`, or point to a valid slice of "
+"memory at the advertised length."
+msgstr ""
+
+#: src/patterns/ffi/export.md:124
+msgid ""
+"In addition, it avoids a lot of pointer provenance issues. To understand "
+"why, let us consider an alternative in some depth: key iteration."
+msgstr ""
+
+#: src/patterns/ffi/export.md:127
+msgid ""
+"Rust is well known for its iterators. When implementing one, the programmer "
+"makes a separate type with a bounded lifetime to its owner, and implements "
+"the `Iterator` trait."
+msgstr ""
+
+#: src/patterns/ffi/export.md:131
+msgid "Here is how iteration would be done in Rust for `DBM`:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:137 src/patterns/ffi/export.md:139
+msgid "/* ... */"
+msgstr ""
+
+#: src/patterns/ffi/export.md:149
+msgid ""
+"This is clean, idiomatic, and safe. thanks to Rust's guarantees. However, "
+"consider what a straightforward API translation would look like:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:154 src/patterns/ffi/export.md:158
+#: src/patterns/ffi/export.md:165
+msgid "\"C\""
+msgstr ""
+
+#: src/patterns/ffi/export.md:155 src/patterns/ffi/export.md:162
+#: src/patterns/ffi/export.md:166
+msgid ""
+"// THIS API IS A BAD IDEA! For real applications, use object-based design "
+"instead.\n"
+msgstr ""
+
+#: src/patterns/ffi/export.md:170
+msgid ""
+"This API loses a key piece of information: the lifetime of the iterator must "
+"not exceed the lifetime of the `Dbm` object that owns it. A user of the "
+"library could use it in a way which causes the iterator to outlive the data "
+"it is iterating on, resulting in reading uninitialized memory."
+msgstr ""
+
+#: src/patterns/ffi/export.md:175
+msgid ""
+"This example written in C contains a bug that will be explained afterwards:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:179
+msgid "// DO NOT USE THIS FUNCTION. IT HAS A SUBTLE BUT SERIOUS BUG!\n"
+msgstr ""
+
+#: src/patterns/ffi/export.md:189
+msgid "// an error is indicated by -1\n"
+msgstr ""
+
+#: src/patterns/ffi/export.md:192
+msgid "// end of the iterator\n"
+msgstr ""
+
+#: src/patterns/ffi/export.md:204
+msgid ""
+"This bug is a classic. Here's what happens when the iterator returns the end-"
+"of-iteration marker:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:207
+msgid ""
+"The loop condition sets `l` to zero, and enters the loop because `0 >= 0`."
+msgstr ""
+
+#: src/patterns/ffi/export.md:208
+msgid "The length is incremented, in this case by zero."
+msgstr ""
+
+#: src/patterns/ffi/export.md:209
+msgid ""
+"The if statement is true, so the database is closed. There should be a break "
+"statement here."
+msgstr ""
+
+#: src/patterns/ffi/export.md:211
+msgid ""
+"The loop condition executes again, causing a `next` call on the closed "
+"object."
+msgstr ""
+
+#: src/patterns/ffi/export.md:214
+msgid ""
+"The worst part about this bug? If the Rust implementation was careful, this "
+"code will work most of the time! If the memory for the `Dbm` object is not "
+"immediately reused, an internal check will almost certainly fail, resulting "
+"in the iterator returning a `-1` indicating an error. But occasionally, it "
+"will cause a segmentation fault, or even worse, nonsensical memory "
+"corruption!"
+msgstr ""
+
+#: src/patterns/ffi/export.md:220
+msgid ""
+"None of this can be avoided by Rust. From its perspective, it put those "
+"objects on its heap, returned pointers to them, and gave up control of their "
+"lifetimes. The C code simply must \"play nice\"."
+msgstr ""
+
+#: src/patterns/ffi/export.md:224
+msgid ""
+"The programmer must read and understand the API documentation. While some "
+"consider that par for the course in C, a good API design can mitigate this "
+"risk. The POSIX API for `DBM` did this by _consolidating the ownership_ of "
+"the iterator with its parent:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:234
+msgid ""
+"Thus, all the lifetimes were bound together, and such unsafety was prevented."
+msgstr ""
+
+#: src/patterns/ffi/export.md:236
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/ffi/export.md:238
+msgid ""
+"However, this design choice also has a number of drawbacks, which should be "
+"considered as well."
+msgstr ""
+
+#: src/patterns/ffi/export.md:241
+msgid ""
+"First, the API itself becomes less expressive. With POSIX DBM, there is only "
+"one iterator per object, and every call changes its state. This is much more "
+"restrictive than iterators in almost any language, even though it is safe. "
+"Perhaps with other related objects, whose lifetimes are less hierarchical, "
+"this limitation is more of a cost than the safety."
+msgstr ""
+
+#: src/patterns/ffi/export.md:247
+msgid ""
+"Second, depending on the relationships of the API's parts, significant "
+"design effort may be involved. Many of the easier design points have other "
+"patterns associated with them:"
+msgstr ""
+
+#: src/patterns/ffi/export.md:251
+msgid ""
+"[Wrapper Type Consolidation](./wrappers.md) groups multiple Rust types "
+"together into an opaque \"object\""
+msgstr ""
+
+#: src/patterns/ffi/export.md:254
+msgid ""
+"[FFI Error Passing](../../idioms/ffi/errors.md) explains error handling with "
+"integer codes and sentinel return values (such as `NULL` pointers)"
+msgstr ""
+
+#: src/patterns/ffi/export.md:257
+msgid ""
+"[Accepting Foreign Strings](../../idioms/ffi/accepting-strings.md) allows "
+"accepting strings with minimal unsafe code, and is easier to get right than "
+"[Passing Strings to FFI](../../idioms/ffi/passing-strings.md)"
+msgstr ""
+
+#: src/patterns/ffi/export.md:261
+msgid ""
+"However, not every API can be done this way. It is up to the best judgement "
+"of the programmer as to who their audience is."
+msgstr ""

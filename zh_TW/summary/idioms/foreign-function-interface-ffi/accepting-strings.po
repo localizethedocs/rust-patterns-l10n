@@ -1,0 +1,206 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:33Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/ffi/accepting-strings.md:1
+msgid "Accepting Strings"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:5
+msgid ""
+"When accepting strings via FFI through pointers, there are two principles "
+"that should be followed:"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:8
+msgid "Keep foreign strings \"borrowed\", rather than copying them directly."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:9
+msgid ""
+"Minimize the amount of complexity and `unsafe` code involved in converting "
+"from a C-style string to native Rust strings."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:12
+msgid "Motivation"
+msgstr "動機"
+
+#: src/idioms/ffi/accepting-strings.md:14
+msgid ""
+"The strings used in C have different behaviours to those used in Rust, "
+"namely:"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:16
+msgid "C strings are null-terminated while Rust strings store their length"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:17
+msgid ""
+"C strings can contain any arbitrary non-zero byte while Rust strings must be "
+"UTF-8"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:19
+msgid ""
+"C strings are accessed and manipulated using `unsafe` pointer operations "
+"while interactions with Rust strings go through safe methods"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:22
+msgid ""
+"The Rust standard library comes with C equivalents of Rust's `String` and "
+"`&str` called `CString` and `&CStr`, that allow us to avoid a lot of the "
+"complexity and `unsafe` code involved in converting between C strings and "
+"Rust strings."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:26
+msgid ""
+"The `&CStr` type also allows us to work with borrowed data, meaning passing "
+"strings between Rust and C is a zero-cost operation."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:29
+msgid "Code Example"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:34
+#: src/idioms/ffi/accepting-strings.md:77
+msgid "// other module content\n"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:36
+msgid ""
+"/// Log a message at the specified level.\n"
+"    ///\n"
+"    /// # Safety\n"
+"    ///\n"
+"    /// It is the caller's guarantee to ensure `msg`:\n"
+"    ///\n"
+"    /// - is not a null pointer\n"
+"    /// - points to valid, initialized data\n"
+"    /// - points to memory ending in a null byte\n"
+"    /// - won't be mutated for the duration of this function call\n"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:47
+#: src/idioms/ffi/accepting-strings.md:79
+msgid "\"C\""
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:48
+#: src/idioms/ffi/accepting-strings.md:83
+msgid "/* ... */"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:50
+msgid ""
+"// SAFETY: The caller has already guaranteed this is okay (see the\n"
+"        // `# Safety` section of the doc-comment).\n"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:55
+#: src/idioms/ffi/accepting-strings.md:105
+msgid "\"FFI string conversion failed\""
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:65
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:67
+msgid "The example is written to ensure that:"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:69
+msgid "The `unsafe` block is as small as possible."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:70
+msgid ""
+"The pointer with an \"untracked\" lifetime becomes a \"tracked\" shared "
+"reference"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:72
+msgid "Consider an alternative, where the string is actually copied:"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:80
+msgid ""
+"// DO NOT USE THIS CODE.\n"
+"        // IT IS UGLY, VERBOSE, AND CONTAINS A SUBTLE BUG.\n"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:85
+msgid "/* SAFETY: strlen is what it is, I guess? */"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:92
+msgid ""
+"// SAFETY: copying from a foreign pointer expected to live\n"
+"            // for the entire stack frame into owned memory\n"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:116
+msgid "This code is inferior to the original in two respects:"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:118
+msgid ""
+"There is much more `unsafe` code, and more importantly, more invariants it "
+"must uphold."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:120
+msgid ""
+"Due to the extensive arithmetic required, there is a bug in this version "
+"that cases Rust `undefined behaviour`."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:123
+msgid ""
+"The bug here is a simple mistake in pointer arithmetic: the string was "
+"copied, all `msg_len` bytes of it. However, the `NUL` terminator at the end "
+"was not."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:126
+msgid ""
+"The Vector then had its size _set_ to the length of the _zero padded string_ "
+"-- rather than _resized_ to it, which could have added a zero at the end. As "
+"a result, the last byte in the Vector is uninitialized memory. When the "
+"`CString` is created at the bottom of the block, its read of the Vector will "
+"cause `undefined behaviour`!"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:132
+msgid ""
+"Like many such issues, this would be difficult issue to track down. "
+"Sometimes it would panic because the string was not `UTF-8`, sometimes it "
+"would put a weird character at the end of the string, sometimes it would "
+"just completely crash."
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:136
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/ffi/accepting-strings.md:138
+msgid "None?"
+msgstr ""
