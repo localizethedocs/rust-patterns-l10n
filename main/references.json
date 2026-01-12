@@ -37,9 +37,9 @@
     "branch" : "main",
     "commit" : 
     {
-      "date" : "2025-12-24 19:45:48 +0100",
-      "hash" : "0f956f19a4d8303afdd7a0b5704396d6b09b21f8",
-      "title" : "build(deps): bump dtolnay/rust-toolchain from 888c2e1ea69ab0d4330cbf0af1ecc7b68f368cc1 to f7ccc83f9ed1e5b9c81d8a67d7ad1a747e22a561 (#467)"
+      "date" : "2026-01-03 13:18:43 +0100",
+      "hash" : "f279f3541c37f3cc36ac6c95ba09465c70ad5271",
+      "title" : "Update accepting-strings.md (#466)"
     }
   },
   "type" : "branch",
