@@ -34,7 +34,7 @@ msgstr ""
 
 #: src/patterns/index.md:14
 msgid "Design patterns in Rust"
-msgstr ""
+msgstr "Rust 設計模式"
 
 #: src/patterns/index.md:16
 msgid ""

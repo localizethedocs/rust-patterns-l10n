@@ -17,7 +17,7 @@ msgstr "介紹"
 
 #: src/intro.md:3
 msgid "Participation"
-msgstr ""
+msgstr "參與"
 
 #: src/intro.md:5
 msgid ""
@@ -73,7 +73,7 @@ msgstr ""
 
 #: src/intro.md:32
 msgid "Design patterns in Rust"
-msgstr ""
+msgstr "Rust 設計模式"
 
 #: src/intro.md:34
 msgid ""
@@ -96,7 +96,7 @@ msgstr ""
 msgid ""
 "[Design patterns](./patterns/index.md): methods to solve common problems "
 "when coding."
-msgstr ""
+msgstr "[設計模式](./patterns/index.md)：編寫程式碼時解決常見問題的方法。"
 
 #: src/intro.md:46
 msgid ""
