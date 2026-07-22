@@ -293,6 +293,22 @@ The goal of this project is to translate the Rust Design Patterns into multiple 
     </tr>
   </thead>
   <tbody>
+    <!-- de_DE -->
+    <tr>
+      <td rowspan="1" colspan="1" align="center" style="text-align: center;"><div><code>de_DE</code></div></td>
+      <td rowspan="1" colspan="1" align="center" style="text-align: center;">
+        <div>
+          <div>German</div>
+          <div>Deutsch</div>
+        </div>
+      </td>
+      <td rowspan="1" colspan="1" align="center" style="text-align: center;">
+        <div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/de" title="de translation" target="_blank"><img alt="de translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=de&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/de" title="de proofreading" target="_blank"><img alt="de proofreading" src="https://img.shields.io/badge/dynamic/json?color=green&label=de&style=flat&logo=crowdin&query=%24.progress.0.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+        </div>
+      </td>
+    </tr>
     <!-- zh_CN -->
     <tr>
       <td rowspan="1" colspan="1" align="center" style="text-align: center;"><div><code>zh_CN</code></div></td>
@@ -304,8 +320,8 @@ The goal of this project is to translate the Rust Design Patterns into multiple 
       </td>
       <td rowspan="1" colspan="1" align="center" style="text-align: center;">
         <div>
-          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-CN" title="zh-CN translation" target="_blank"><img alt="zh-CN translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-CN&style=flat&logo=crowdin&query=%24.progress.0.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
-          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-CN" title="zh-CN proofreading" target="_blank"><img alt="zh-CN proofreading" src="https://img.shields.io/badge/dynamic/json?color=green&label=zh-CN&style=flat&logo=crowdin&query=%24.progress.0.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-CN" title="zh-CN translation" target="_blank"><img alt="zh-CN translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-CN&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-CN" title="zh-CN proofreading" target="_blank"><img alt="zh-CN proofreading" src="https://img.shields.io/badge/dynamic/json?color=green&label=zh-CN&style=flat&logo=crowdin&query=%24.progress.1.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
         </div>
       </td>
     </tr>
@@ -320,8 +336,8 @@ The goal of this project is to translate the Rust Design Patterns into multiple 
       </td>
       <td rowspan="1" colspan="1" align="center" style="text-align: center;">
         <div>
-          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-TW" title="zh-TW translation" target="_blank"><img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.1.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
-          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-TW" title="zh-TW proofreading" target="_blank"><img alt="zh-TW proofreading" src="https://img.shields.io/badge/dynamic/json?color=green&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.1.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-TW" title="zh-TW translation" target="_blank"><img alt="zh-TW translation" src="https://img.shields.io/badge/dynamic/json?color=blue&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.translationProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
+          <div><a href="https://localizethedocs.crowdin.com/rust-patterns-l10n/zh-TW" title="zh-TW proofreading" target="_blank"><img alt="zh-TW proofreading" src="https://img.shields.io/badge/dynamic/json?color=green&label=zh-TW&style=flat&logo=crowdin&query=%24.progress.2.data.approvalProgress&url=https%3A%2F%2Fbadges.awesome-crowdin.com%2Fstats-200032568-49.json" /></a></div>
         </div>
       </td>
     </tr>
@@ -351,6 +367,13 @@ You can preview translations in <a href="https://projects.localizethedocs.org/ru
       <td rowspan="1" colspan="1" align="center" style="text-align: center;"><div><code>en_US</code></div></td>
       <td rowspan="1" colspan="1" align="left"   style="text-align: left;  ">
         <div><a href="https://projects.localizethedocs.org/rust-patterns-l10n/en-us">https://projects.localizethedocs.org/rust-patterns-l10n/en-us</a></div>
+      </td>
+    </tr>
+    <!-- de_DE -->
+    <tr>
+      <td rowspan="1" colspan="1" align="center" style="text-align: center;"><div><code>de_DE</code></div></td>
+      <td rowspan="1" colspan="1" align="left"   style="text-align: left;  ">
+        <div><a href="https://projects.localizethedocs.org/rust-patterns-l10n/de-de">https://projects.localizethedocs.org/rust-patterns-l10n/de-de</a></div>
       </td>
     </tr>
     <!-- zh_CN -->
