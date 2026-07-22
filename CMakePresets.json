@@ -30,6 +30,15 @@
       }
     },
     {
+      "name" : "de_DE",
+      "displayName" : "German",
+      "description" : "Deutsch",
+      "inherits" : "default",
+      "cacheVariables" : {
+        "LANGUAGE" : "de_DE"
+      }
+    },
+    {
       "name" : "zh_CN",
       "displayName" : "Simplified Chinese",
       "description" : "简体中文",
