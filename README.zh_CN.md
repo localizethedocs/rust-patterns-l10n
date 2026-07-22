@@ -6,6 +6,7 @@
 <p></p>
 <ul>
   <li><a href="./README.md"><code>en_US</code> : English</a></li>
+  <li><a href="./README.de_DE.md"><code>de_DE</code> : Deutsch</a></li>
   <li><a href="./README.zh_CN.md"><code>zh_CN</code> : 简体中文</a></li>
   <li><a href="./README.zh_TW.md"><code>zh_TW</code> : 繁體中文</a></li>
 </ul>
