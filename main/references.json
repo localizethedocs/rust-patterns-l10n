@@ -1,6 +1,16 @@
 {
   "po" : 
   {
+    "de_DE" : 
+    {
+      "branch" : "main",
+      "commit" : 
+      {
+        "date" : "2026-01-03 13:18:43 +0100",
+        "hash" : "f279f3541c37f3cc36ac6c95ba09465c70ad5271",
+        "title" : "Update accepting-strings.md (#466)"
+      }
+    },
     "en_US" : 
     {
       "branch" : "",
