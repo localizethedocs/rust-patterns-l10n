@@ -1,0 +1,121 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/structural/trait-for-bounds.md:1
+msgid "Use custom traits to avoid complex type bounds"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:5
+msgid ""
+"Trait bounds can become somewhat unwieldy, especially if one of the `Fn` "
+"traits[^fn-traits] is involved and there are specific requirements on the "
+"output type. In such cases the introduction of a new trait may help reduce "
+"verbosity, eliminate some type parameters and thus increase expressiveness. "
+"Such a trait can be accompanied with a generic `impl` for all types "
+"satisfying the original bound."
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:11
+msgid "Example"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:13
+msgid ""
+"Let's imagine some sort of monitoring or information gathering system. The "
+"system retrieves values of various types from diverse sources. It may derive "
+"from them some sort of status indicating issues. For example, the total "
+"amount of free memory should be above a certain theshold, and the user with "
+"the id `0` should always be named \"root\"."
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:19
+msgid ""
+"For management reasons, we probably want type erasure on the top level. "
+"However, we also need to provide specific (user configurable) assesments for "
+"specific types of data sources (e.g. thresholds and ranges for numerical "
+"types). And since sources for these values are diverse, we may choose to "
+"supply data sources as closures that return a value when called. Because we "
+"are probably getting those values from the operating system, we are likely "
+"confronted with operations that may fail."
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:27
+msgid ""
+"We thus may have settled on the following types and traits for handling "
+"specific values:"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:52
+#: src/patterns/structural/trait-for-bounds.md:56
+#: src/patterns/structural/trait-for-bounds.md:60
+#: src/patterns/structural/trait-for-bounds.md:90
+msgid "// ...\n"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:64
+msgid ""
+"With these types, we will need to repeat the trait bounds for `G` in at "
+"least a few places. Readability suffers, partially due the the fact that the "
+"getter returns a `Result`. Introducing a bound for \"getters\" allows a more "
+"expressive bound and eliminate one of the type parameters:"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:96
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:98
+msgid ""
+"Introducing a new trait can help simplify type bounds, particularly via the "
+"elimination of type parameters. A good name for the new trait will also make "
+"the bound more expressive. The new trait, an abstraction, also offers "
+"opportunities in itself, including:"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:103
+msgid ""
+"additional, specialized types implementing the new trait (e.g. representing "
+"an idendity of some sort) as well as other useful traits such as `Default` "
+"and"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:105
+msgid ""
+"additional methods, as long as they can be implemented for all relevant "
+"types."
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:107
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:109
+msgid ""
+"Introducing new items such as the trait means we need to find an appropriate "
+"name and place for it. It also means one more item users of the original "
+"functionality need to investigate[^read-docs]. Depending on presentation, it "
+"may not be obvious right away that a simple closure may be used as a "
+"`Getter` in the example above."
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:115
+msgid "i.e. `Fn`, `FnOnce` and `FnMut`"
+msgstr ""
+
+#: src/patterns/structural/trait-for-bounds.md:117
+msgid "meaning they may need to read more documentation"
+msgstr ""

@@ -1,0 +1,85 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/structural/unsafe-mods.md:1
+msgid "Contain unsafety in small modules"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:3
+msgid "Description"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:5
+msgid ""
+"If you have `unsafe` code, create the smallest possible module that can "
+"uphold the needed invariants to build a minimal safe interface upon the "
+"unsafety. Embed this into a larger module that contains only safe code and "
+"presents an ergonomic interface. Note that the outer module can contain "
+"unsafe functions and methods that call directly into the unsafe code. Users "
+"may use this to gain speed benefits."
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:12
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:14
+msgid "This restricts the unsafe code that must be audited"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:15
+msgid ""
+"Writing the outer module is much easier, since you can count on the "
+"guarantees of the inner module"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:18
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:20
+msgid "Sometimes, it may be hard to find a suitable interface."
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:21
+msgid "The abstraction may introduce inefficiencies."
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:23
+msgid "Examples"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:25
+msgid ""
+"The [`toolshed`](https://docs.rs/toolshed) crate contains its unsafe "
+"operations in submodules, presenting a safe interface to users."
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:27
+msgid ""
+"`std`'s `String` class is a wrapper over `Vec<u8>` with the added invariant "
+"that the contents must be valid UTF-8. The operations on `String` ensure "
+"this behavior. However, users have the option of using an `unsafe` method to "
+"create a `String`, in which case the onus is on them to guarantee the "
+"validity of the contents."
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:33
+msgid "See also"
+msgstr ""
+
+#: src/patterns/structural/unsafe-mods.md:35
+msgid ""
+"[Ralf Jung's Blog about invariants in unsafe code](https://www.ralfj.de/"
+"blog/2018/08/22/two-kinds-of-invariants.html)"
+msgstr ""
