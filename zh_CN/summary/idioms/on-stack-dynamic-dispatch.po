@@ -1,0 +1,139 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:33Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/on-stack-dyn-dispatch.md:1
+msgid "On-Stack Dynamic Dispatch"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:5
+msgid ""
+"We can dynamically dispatch over multiple values, however, to do so, we need "
+"to declare multiple variables to bind differently-typed objects. To extend "
+"the lifetime as necessary, we can use deferred conditional initialization, "
+"as seen below:"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:10
+msgid "Example"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:17
+#: src/idioms/on-stack-dyn-dispatch.md:20
+#: src/idioms/on-stack-dyn-dispatch.md:56
+msgid "\"-\""
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:18
+msgid "// We need to describe the type to get dynamic dispatch.\n"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:25
+#: src/idioms/on-stack-dyn-dispatch.md:60
+msgid "// Read from `readable` here.\n"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:32
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:34
+msgid ""
+"Rust monomorphises code by default. This means a copy of the code will be "
+"generated for each type it is used with and optimized independently. While "
+"this allows for very fast code on the hot path, it also bloats the code in "
+"places where performance is not of the essence, thus costing compile time "
+"and cache usage."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:40
+msgid ""
+"Luckily, Rust allows us to use dynamic dispatch, but we have to explicitly "
+"ask for it."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:43
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:45
+msgid ""
+"We do not need to allocate anything on the heap. Neither do we need to "
+"initialize something we won't use later, nor do we need to monomorphize the "
+"whole code that follows to work with both `File` or `Stdin`."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:49
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:51
+msgid ""
+"Before Rust 1.79.0, the code needed two `let` bindings with deferred "
+"initialization, which made up more moving parts than the `Box`\\-based "
+"version:"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:55
+msgid "// We still need to ascribe the type for dynamic dispatch.\n"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:64
+msgid "Luckily, this disadvantage is now gone. Yay!"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:66
+msgid "Discussion"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:68
+msgid ""
+"Since Rust 1.79.0, the compiler will automatically extend the lifetimes of "
+"temporary values within `&` or `&mut` as long as possible within the scope "
+"of the function."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:72
+msgid ""
+"This means we can simply use a `&mut` value here without worrying about "
+"placing the contents into some `let` binding (which would have been needed "
+"for deferred initialization, which was the solution used before that change)."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:76
+msgid ""
+"We still have a place for each value (even if that place is temporary), the "
+"compiler knows the size of each value and each borrowed value outlives all "
+"references borrowed from it."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:80
+msgid "See also"
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:82
+msgid ""
+"[Finalisation in destructors](dtor-finally.md) and [RAII guards](../patterns/"
+"behavioural/RAII.md) can benefit from tight control over lifetimes."
+msgstr ""
+
+#: src/idioms/on-stack-dyn-dispatch.md:85
+msgid ""
+"For conditionally filled `Option<&T>`s of (mutable) references, one can "
+"initialize an `Option<T>` directly and use its [`.as_ref()`](https://doc."
+"rust-lang.org/std/option/enum.Option.html#method.as_ref) method to get an "
+"optional reference."
+msgstr ""

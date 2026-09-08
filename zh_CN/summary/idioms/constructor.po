@@ -1,0 +1,118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:33Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/ctor.md:1
+msgid "Constructors"
+msgstr ""
+
+#: src/idioms/ctor.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/ctor.md:5
+msgid ""
+"Rust does not have constructors as a language construct. Instead, the "
+"convention is to use an [associated function](https://doc.rust-lang.org/"
+"stable/book/ch05-03-method-syntax.html#associated-functions) `new` to create "
+"an object:"
+msgstr ""
+
+#: src/idioms/ctor.md:10
+msgid ""
+"/// Time in seconds.\n"
+"///\n"
+"/// # Example\n"
+"///\n"
+"/// ```\n"
+"/// let s = Second::new(42);\n"
+"/// assert_eq!(42, s.value());\n"
+"/// ```\n"
+msgstr ""
+
+#: src/idioms/ctor.md:23
+msgid ""
+"// Constructs a new instance of [`Second`].\n"
+"    // Note this is an associated function - no self.\n"
+msgstr ""
+
+#: src/idioms/ctor.md:29 src/idioms/ctor.md:54 src/idioms/ctor.md:85
+msgid "/// Returns the value in seconds.\n"
+msgstr ""
+
+#: src/idioms/ctor.md:36
+msgid "Default Constructors"
+msgstr ""
+
+#: src/idioms/ctor.md:38
+msgid ""
+"Rust supports default constructors with the [`Default`](https://doc.rust-"
+"lang.org/stable/std/default/trait.Default.html) trait:"
+msgstr ""
+
+#: src/idioms/ctor.md:41 src/idioms/ctor.md:71
+msgid ""
+"/// Time in seconds.\n"
+"///\n"
+"/// # Example\n"
+"///\n"
+"/// ```\n"
+"/// let s = Second::default();\n"
+"/// assert_eq!(0, s.value());\n"
+"/// ```\n"
+msgstr ""
+
+#: src/idioms/ctor.md:67
+msgid ""
+"`Default` can also be derived if all types of all fields implement "
+"`Default`, like they do with `Second`:"
+msgstr ""
+
+#: src/idioms/ctor.md:92
+msgid ""
+"**Note:** It is common and expected for types to implement both `Default` "
+"and an empty `new` constructor. `new` is the constructor convention in Rust, "
+"and users expect it to exist, so if it is reasonable for the basic "
+"constructor to take no arguments, then it should, even if it is functionally "
+"identical to default."
+msgstr ""
+
+#: src/idioms/ctor.md:97
+msgid ""
+"**Hint:** The advantage of implementing or deriving `Default` is that your "
+"type can now be used where a `Default` implementation is required, most "
+"prominently, any of the [`*or_default` functions in the standard library]"
+"(https://doc.rust-lang.org/stable/std/?search=or_default)."
+msgstr ""
+
+#: src/idioms/ctor.md:101
+msgid "See also"
+msgstr ""
+
+#: src/idioms/ctor.md:103
+msgid ""
+"The [default idiom](default.md) for a more in-depth description of the "
+"`Default` trait."
+msgstr ""
+
+#: src/idioms/ctor.md:106
+msgid ""
+"The [builder pattern](../patterns/creational/builder.md) for constructing "
+"objects where there are multiple configurations."
+msgstr ""
+
+#: src/idioms/ctor.md:109
+msgid ""
+"[API Guidelines/C-COMMON-TRAITS](https://rust-lang.github.io/api-guidelines/"
+"interoperability.html#types-eagerly-implement-common-traits-c-common-traits) "
+"for implementing both, `Default` and `new`."
+msgstr ""
