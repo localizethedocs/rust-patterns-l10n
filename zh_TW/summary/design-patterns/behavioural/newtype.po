@@ -1,0 +1,189 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/patterns/behavioural/newtype.md:1
+msgid "Newtype"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:3
+msgid ""
+"What if in some cases we want a type to behave similar to another type or "
+"enforce some behaviour at compile time when using only type aliases would "
+"not be enough?"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:7
+msgid ""
+"For example, if we want to create a custom `Display` implementation for "
+"`String` due to security considerations (e.g. passwords)."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:10
+msgid ""
+"For such cases we could use the `Newtype` pattern to provide **type safety** "
+"and **encapsulation**."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:13
+msgid "Description"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:15
+msgid ""
+"Use a tuple struct with a single field to make an opaque wrapper for a type. "
+"This creates a new type, rather than an alias to a type (`type` items)."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:18
+msgid "Example"
+msgstr "範例"
+
+#: src/patterns/behavioural/newtype.md:22
+msgid "// Create Newtype Password to override the Display trait for String\n"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:28
+msgid "\"****************\""
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:33
+msgid "\"ThisIsMyPassword\""
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:35
+msgid "\"unsecured_password: {unsecured_password}\""
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:36
+msgid "\"secured_password: {secured_password}\""
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:45
+msgid "Motivation"
+msgstr "動機"
+
+#: src/patterns/behavioural/newtype.md:47
+msgid ""
+"The primary motivation for newtypes is abstraction. It allows you to share "
+"implementation details between types while precisely controlling the "
+"interface. By using a newtype rather than exposing the implementation type "
+"as part of an API, it allows you to change implementation backwards "
+"compatibly."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:52
+msgid ""
+"Newtypes can be used for distinguishing units, e.g., wrapping `f64` to give "
+"distinguishable `Miles` and `Kilometres`."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:55
+msgid "Advantages"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:57
+msgid ""
+"The wrapped and wrapper types are not type compatible (as opposed to using "
+"`type`), so users of the newtype will never 'confuse' the wrapped and "
+"wrapper types."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:61
+msgid "Newtypes are a zero-cost abstraction - there is no runtime overhead."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:63
+msgid ""
+"The privacy system ensures that users cannot access the wrapped type (if the "
+"field is private, which it is by default)."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:66
+msgid "Disadvantages"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:68
+msgid ""
+"The downside of newtypes (especially compared with type aliases), is that "
+"there is no special language support. This means there can be _a lot_ of "
+"boilerplate. You need a 'pass through' method for every method you want to "
+"expose on the wrapped type, and an impl for every trait you want to also be "
+"implemented for the wrapper type."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:74
+msgid "Discussion"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:76
+msgid ""
+"Newtypes are very common in Rust code. Abstraction or representing units are "
+"the most common uses, but they can be used for other reasons:"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:79
+msgid ""
+"restricting functionality (reduce the functions exposed or traits "
+"implemented),"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:81
+msgid "making a type with copy semantics have move semantics,"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:82
+msgid ""
+"abstraction by providing a more concrete type and thus hiding internal "
+"types, e.g.,"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:89
+msgid ""
+"Here, `Bar` might be some public, generic type and `T1` and `T2` are some "
+"internal types. Users of our module shouldn't know that we implement `Foo` "
+"by using a `Bar`, but what we're really hiding here is the types `T1` and "
+"`T2`, and how they are used with `Bar`."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:94
+msgid "See also"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:96
+msgid ""
+"[Advanced Types in the book](https://doc.rust-lang.org/book/ch19-04-advanced-"
+"types.html?highlight=newtype#using-the-newtype-pattern-for-type-safety-and-"
+"abstraction)"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:97
+msgid "[Newtypes in Haskell](https://wiki.haskell.org/Newtype)"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:98
+msgid ""
+"[Type aliases](https://doc.rust-lang.org/stable/book/ch19-04-advanced-types."
+"html#creating-type-synonyms-with-type-aliases)"
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:99
+msgid ""
+"[derive_more](https://crates.io/crates/derive_more), a crate for deriving "
+"many builtin traits on newtypes."
+msgstr ""
+
+#: src/patterns/behavioural/newtype.md:101
+msgid ""
+"[The Newtype Pattern In Rust](https://web.archive.org/web/20230519162111/"
+"https://www.worthe-it.co.za/blog/2020-10-31-newtype-pattern-in-rust.html)"
+msgstr ""
