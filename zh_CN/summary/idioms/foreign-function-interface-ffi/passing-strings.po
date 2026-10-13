@@ -1,0 +1,146 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Rust Design Patterns\n"
+"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: src/idioms/ffi/passing-strings.md:1
+msgid "Passing Strings"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:3
+msgid "Description"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:5
+msgid ""
+"When passing strings to FFI functions, there are four principles that should "
+"be followed:"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:8
+msgid "Make the lifetime of owned strings as long as possible."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:9
+msgid "Minimize `unsafe` code during the conversion."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:10
+msgid ""
+"If the C code can modify the string data, use `Vec` instead of `CString`."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:11
+msgid ""
+"Unless the Foreign Function API requires it, the ownership of the string "
+"should not transfer to the callee."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:14
+msgid "Motivation"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:16
+msgid ""
+"Rust has built-in support for C-style strings with its `CString` and `CStr` "
+"types. However, there are different approaches one can take with strings "
+"that are being sent to a foreign function call from a Rust function."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:20
+msgid ""
+"The best practice is simple: use `CString` in such a way as to minimize "
+"`unsafe` code. However, a secondary caveat is that _the object must live "
+"long enough_, meaning the lifetime should be maximized. In addition, the "
+"documentation explains that \"round-tripping\" a `CString` after "
+"modification is UB, so additional work is necessary in that case."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:26
+msgid "Code Example"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:31 src/idioms/ffi/passing-strings.md:80
+msgid "// other module content\n"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:33
+msgid "\"C\""
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:42
+msgid ""
+"// SAFETY: calling an FFI whose documentation says the pointer is\n"
+"            // const, so no modification should occur\n"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:48
+msgid "// The lifetime of c_err continues until here\n"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:54
+msgid ""
+"// SAFETY: calling an FFI whose documentation implies\n"
+"            // that the input need only live as long as the call\n"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:66
+msgid "Advantages"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:68
+msgid "The example is written in a way to ensure that:"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:70
+msgid "The `unsafe` block is as small as possible."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:71
+msgid "The `CString` lives long enough."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:72
+msgid "Errors with typecasts are always propagated when possible."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:74
+msgid ""
+"A common mistake (so common it's in the documentation) is to not use the "
+"variable in the first block:"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:84
+msgid "// SAFETY: whoops, this contains a dangling pointer!\n"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:92
+msgid ""
+"This code will result in a dangling pointer, because the lifetime of the "
+"`CString` is not extended by the pointer creation, unlike if a reference "
+"were created."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:96
+msgid ""
+"Another issue frequently raised is that the initialization of a 1k vector of "
+"zeroes is \"slow\". However, recent versions of Rust actually optimize that "
+"particular macro to a call to `zmalloc`, meaning it is as fast as the "
+"operating system's ability to return zeroed memory (which is quite fast)."
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:101
+msgid "Disadvantages"
+msgstr ""
+
+#: src/idioms/ffi/passing-strings.md:103
+msgid "None?"
+msgstr ""
