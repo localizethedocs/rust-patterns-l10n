@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Rust Design Patterns\n"
-"POT-Creation-Date: 2025-12-22T08:31:34Z\n"
+"POT-Creation-Date: 2026-10-27T14:39:17Z\n"
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -24,8 +24,8 @@ msgstr ""
 #: src/functional/optics.md:6
 msgid ""
 "Nevertheless, exploring the concept may be helpful to understand other "
-"patterns in Rust APIs, such as [visitors](../patterns/behavioural/visitor."
-"md). They also have niche use cases."
+"patterns in Rust APIs, such as [visitors](../patterns/behavioural/"
+"visitor.md). They also have niche use cases."
 msgstr ""
 
 #: src/functional/optics.md:10
@@ -568,7 +568,7 @@ msgstr ""
 
 #: src/functional/optics.md:498
 msgid ""
-"[luminance](https://github.com/phaazon/luminance-rs) is a crate for drawing "
+"[luminance](https://crates.io/crates/luminance) is a crate for drawing "
 "computer graphics that uses similar API design, including procedural macros "
 "to create full prisms for buffers of different pixel types that remain "
 "generic"
@@ -576,10 +576,10 @@ msgstr ""
 
 #: src/functional/optics.md:501
 msgid ""
-"[An Article about Lenses in Scala](https://web.archive.org/"
-"web/20221128185849/https://medium.com/zyseme-technology/functional-"
-"references-lens-and-other-optics-in-scala-e5f7e2fdafe) that is very readable "
-"even without Scala expertise."
+"[An Article about Lenses in Scala](https://web.archive.org/web/"
+"20221128185849/https://medium.com/zyseme-technology/functional-references-"
+"lens-and-other-optics-in-scala-e5f7e2fdafe) that is very readable even "
+"without Scala expertise."
 msgstr ""
 
 #: src/functional/optics.md:503
