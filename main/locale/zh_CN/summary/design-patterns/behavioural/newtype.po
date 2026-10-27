@@ -172,8 +172,8 @@ msgstr ""
 
 #: src/patterns/behavioural/newtype.md:98
 msgid ""
-"[Type aliases](https://doc.rust-lang.org/stable/book/ch19-04-advanced-types."
-"html#creating-type-synonyms-with-type-aliases)"
+"[Type aliases](https://doc.rust-lang.org/stable/book/ch19-04-advanced-"
+"types.html#creating-type-synonyms-with-type-aliases)"
 msgstr ""
 
 #: src/patterns/behavioural/newtype.md:99

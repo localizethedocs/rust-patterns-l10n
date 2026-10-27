@@ -162,6 +162,6 @@ msgstr ""
 
 #: src/patterns/behavioural/command.md:222
 msgid ""
-"[Another example for the `command` pattern](https://web.archive.org/"
-"web/20210223131236/https://chercher.tech/rust/command-design-pattern-rust)"
+"[Another example for the `command` pattern](https://web.archive.org/web/"
+"20210223131236/https://chercher.tech/rust/command-design-pattern-rust)"
 msgstr ""

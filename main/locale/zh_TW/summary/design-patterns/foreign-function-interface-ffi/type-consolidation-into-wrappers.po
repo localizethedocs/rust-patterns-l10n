@@ -209,8 +209,8 @@ msgid ""
 "Rust's aliasing rules are the problem, and C simply ignores them for its "
 "pointers. In exchange, it is common to see code that is declared in the "
 "manual as \"not thread safe\" under some or all circumstances. In fact, the "
-"[GNU C library](https://manpages.debian.org/buster/manpages/attributes.7.en."
-"html) has an entire lexicon dedicated to concurrent behavior!"
+"[GNU C library](https://manpages.debian.org/buster/manpages/"
+"attributes.7.en.html) has an entire lexicon dedicated to concurrent behavior!"
 msgstr ""
 
 #: src/patterns/ffi/wrappers.md:151

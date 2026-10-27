@@ -86,8 +86,8 @@ msgstr ""
 #: src/idioms/mem-replace.md:83
 msgid ""
 "**NOTE:** `mem::replace` is very similar, but allows us to specify what to "
-"replace the value with. An equivalent to our `mem::take` line would be `mem::"
-"replace(name, String::new())`."
+"replace the value with. An equivalent to our `mem::take` line would be "
+"`mem::replace(name, String::new())`."
 msgstr ""
 
 #: src/idioms/mem-replace.md:87

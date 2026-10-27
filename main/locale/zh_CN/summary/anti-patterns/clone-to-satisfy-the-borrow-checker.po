@@ -134,8 +134,8 @@ msgstr ""
 
 #: src/anti_patterns/borrow_clone.md:68
 msgid ""
-"[`Rc<T>` documentation, which handles .clone() intelligently](http://doc."
-"rust-lang.org/std/rc/)"
+"[`Rc<T>` documentation, which handles .clone() intelligently](http://"
+"doc.rust-lang.org/std/rc/)"
 msgstr ""
 
 #: src/anti_patterns/borrow_clone.md:69

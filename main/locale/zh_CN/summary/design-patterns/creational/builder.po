@@ -134,11 +134,11 @@ msgstr ""
 #: src/patterns/creational/builder.md:91
 msgid ""
 "This pattern is often used where the builder object is useful in its own "
-"right, rather than being just a builder. For example, see [`std::process::"
-"Command`](https://doc.rust-lang.org/std/process/struct.Command.html) is a "
-"builder for [`Child`](https://doc.rust-lang.org/std/process/struct.Child."
-"html) (a process). In these cases, the `T` and `TBuilder` naming pattern is "
-"not used."
+"right, rather than being just a builder. For example, see "
+"[`std::process::Command`](https://doc.rust-lang.org/std/process/"
+"struct.Command.html) is a builder for [`Child`](https://doc.rust-lang.org/"
+"std/process/struct.Child.html) (a process). In these cases, the `T` and "
+"`TBuilder` naming pattern is not used."
 msgstr ""
 
 #: src/patterns/creational/builder.md:98

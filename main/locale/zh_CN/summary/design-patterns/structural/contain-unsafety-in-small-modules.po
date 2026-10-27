@@ -80,6 +80,6 @@ msgstr ""
 
 #: src/patterns/structural/unsafe-mods.md:35
 msgid ""
-"[Ralf Jung's Blog about invariants in unsafe code](https://www.ralfj.de/"
-"blog/2018/08/22/two-kinds-of-invariants.html)"
+"[Ralf Jung's Blog about invariants in unsafe code](https://www.ralfj.de/blog/"
+"2018/08/22/two-kinds-of-invariants.html)"
 msgstr ""

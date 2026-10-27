@@ -77,9 +77,10 @@ msgstr ""
 msgid ""
 "Furthermore, crates that supply additional lints (e.g. [rust-clippy](https://"
 "github.com/rust-lang/rust-clippy)) can no longer be used unless the "
-"annotation is removed. This is mitigated with [\\--cap-lints](https://doc."
-"rust-lang.org/rustc/lints/levels.html#capping-lints). The `--cap-lints=warn` "
-"command line argument, turns all `deny` lint errors into warnings."
+"annotation is removed. This is mitigated with [\\--cap-lints](https://"
+"doc.rust-lang.org/rustc/lints/levels.html#capping-lints). The `--cap-"
+"lints=warn` command line argument, turns all `deny` lint errors into "
+"warnings."
 msgstr ""
 
 #: src/anti_patterns/deny-warnings.md:42
@@ -142,8 +143,8 @@ msgstr ""
 
 #: src/anti_patterns/deny-warnings.md:104
 msgid ""
-"[deprecate attribute](https://doc.rust-lang.org/reference/attributes."
-"html#deprecation) documentation"
+"[deprecate attribute](https://doc.rust-lang.org/reference/"
+"attributes.html#deprecation) documentation"
 msgstr ""
 
 #: src/anti_patterns/deny-warnings.md:105

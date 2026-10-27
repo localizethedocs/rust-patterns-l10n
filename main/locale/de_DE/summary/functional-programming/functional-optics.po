@@ -24,8 +24,8 @@ msgstr ""
 #: src/functional/optics.md:6
 msgid ""
 "Nevertheless, exploring the concept may be helpful to understand other "
-"patterns in Rust APIs, such as [visitors](../patterns/behavioural/visitor."
-"md). They also have niche use cases."
+"patterns in Rust APIs, such as [visitors](../patterns/behavioural/"
+"visitor.md). They also have niche use cases."
 msgstr ""
 
 #: src/functional/optics.md:10
@@ -576,10 +576,10 @@ msgstr ""
 
 #: src/functional/optics.md:501
 msgid ""
-"[An Article about Lenses in Scala](https://web.archive.org/"
-"web/20221128185849/https://medium.com/zyseme-technology/functional-"
-"references-lens-and-other-optics-in-scala-e5f7e2fdafe) that is very readable "
-"even without Scala expertise."
+"[An Article about Lenses in Scala](https://web.archive.org/web/"
+"20221128185849/https://medium.com/zyseme-technology/functional-references-"
+"lens-and-other-optics-in-scala-e5f7e2fdafe) that is very readable even "
+"without Scala expertise."
 msgstr ""
 
 #: src/functional/optics.md:503

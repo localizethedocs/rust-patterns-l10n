@@ -90,8 +90,8 @@ msgid ""
 "**NOTE:** This grammar should be further transformed depending on what we "
 "are going to do with it. For example, we might need to remove left "
 "recursion. For more details please see [Compilers: Principles,Techniques, "
-"and Tools](https://en.wikipedia.org/wiki/Compilers:_Principles,_Techniques,"
-"_and_Tools) (aka Dragon Book)."
+"and Tools](https://en.wikipedia.org/wiki/"
+"Compilers:_Principles,_Techniques,_and_Tools) (aka Dragon Book)."
 msgstr ""
 
 #: src/patterns/behavioural/interpreter.md:50

@@ -326,8 +326,8 @@ msgstr ""
 
 #: src/functional/generics-type-classes.md:262
 msgid ""
-"See: [impl From\\<CString\\> for Vec\\<u8\\>](https://doc.rust-lang."
-"org/1.59.0/src/std/ffi/c_str.rs.html#803-811)"
+"See: [impl From\\<CString\\> for Vec\\<u8\\>](https://doc.rust-lang.org/"
+"1.59.0/src/std/ffi/c_str.rs.html#803-811)"
 msgstr ""
 
 #: src/functional/generics-type-classes.md:265
@@ -339,8 +339,8 @@ msgstr ""
 
 #: src/functional/generics-type-classes.md:268
 msgid ""
-"See: [impl\\<'\\_\\> ToString for Cow\\<'\\_, str>](https://doc.rust-lang."
-"org/stable/src/alloc/string.rs.html#2235-2240)"
+"See: [impl\\<'\\_\\> ToString for Cow\\<'\\_, str>](https://doc.rust-"
+"lang.org/stable/src/alloc/string.rs.html#2235-2240)"
 msgstr ""
 
 #: src/functional/generics-type-classes.md:271
@@ -358,8 +358,8 @@ msgstr ""
 
 #: src/functional/generics-type-classes.md:277
 msgid ""
-"See: [The Case for the Type State Pattern](https://web.archive.org/"
-"web/20210325065112/https://www.novatec-gmbh.de/en/blog/the-case-for-the-"
+"See: [The Case for the Type State Pattern](https://web.archive.org/web/"
+"20210325065112/https://www.novatec-gmbh.de/en/blog/the-case-for-the-"
 "typestate-pattern-the-typestate-pattern-itself/) and [Rusty Typestate Series "
 "(an extensive thesis)](https://web.archive.org/web/20210328164854/https://"
 "rustype.github.io/notes/notes/rust-typestate-series/rust-typestate-index)"

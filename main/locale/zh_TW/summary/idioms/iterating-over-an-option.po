@@ -33,8 +33,8 @@ msgstr ""
 #: src/idioms/option-iter.md:11
 msgid ""
 "Since `Option` implements `IntoIterator`, it can be used as an argument to "
-"[`.extend()`](https://doc.rust-lang.org/std/iter/trait.Extend.html#tymethod."
-"extend):"
+"[`.extend()`](https://doc.rust-lang.org/std/iter/"
+"trait.Extend.html#tymethod.extend):"
 msgstr ""
 
 #: src/idioms/option-iter.md:15 src/idioms/option-iter.md:31
@@ -60,8 +60,8 @@ msgstr ""
 #: src/idioms/option-iter.md:26
 msgid ""
 "If you need to tack an `Option` to the end of an existing iterator, you can "
-"pass it to [`.chain()`](https://doc.rust-lang.org/std/iter/trait.Iterator."
-"html#method.chain):"
+"pass it to [`.chain()`](https://doc.rust-lang.org/std/iter/"
+"trait.Iterator.html#method.chain):"
 msgstr ""
 
 #: src/idioms/option-iter.md:35
@@ -95,10 +95,10 @@ msgstr ""
 
 #: src/idioms/option-iter.md:53
 msgid ""
-"[`Iterator::filter_map`](https://doc.rust-lang.org/std/iter/trait.Iterator."
-"html#method.filter_map) is a version of [`Iterator::map`](https://doc.rust-"
-"lang.org/std/iter/trait.Iterator.html#method.map), specialized to mapping "
-"functions which return `Option`."
+"[`Iterator::filter_map`](https://doc.rust-lang.org/std/iter/"
+"trait.Iterator.html#method.filter_map) is a version of [`Iterator::map`]"
+"(https://doc.rust-lang.org/std/iter/trait.Iterator.html#method.map), "
+"specialized to mapping functions which return `Option`."
 msgstr ""
 
 #: src/idioms/option-iter.md:58
@@ -109,6 +109,6 @@ msgstr ""
 
 #: src/idioms/option-iter.md:61
 msgid ""
-"[Documentation for `Option<T>`](https://doc.rust-lang.org/std/option/enum."
-"Option.html)"
+"[Documentation for `Option<T>`](https://doc.rust-lang.org/std/option/"
+"enum.Option.html)"
 msgstr ""

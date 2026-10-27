@@ -25,10 +25,10 @@ msgid ""
 "_specific_ to the type; Rust cannot abstract over \"everything that has a "
 "`new()` method\". To allow this, the [`Default`](https://doc.rust-lang.org/"
 "stable/std/default/trait.Default.html) trait was conceived, which can be "
-"used with containers and other generic types (e.g. see [`Option::"
-"unwrap_or_default()`](https://doc.rust-lang.org/stable/std/option/enum."
-"Option.html#method.unwrap_or_default)). Notably, some containers already "
-"implement it where applicable."
+"used with containers and other generic types (e.g. see "
+"[`Option::unwrap_or_default()`](https://doc.rust-lang.org/stable/std/option/"
+"enum.Option.html#method.unwrap_or_default)). Notably, some containers "
+"already implement it where applicable."
 msgstr ""
 
 #: src/idioms/default.md:11
@@ -103,8 +103,8 @@ msgstr ""
 
 #: src/idioms/default.md:62
 msgid ""
-"The [`Default`](https://doc.rust-lang.org/stable/std/default/trait.Default."
-"html) documentation (scroll down for the list of implementors)"
+"The [`Default`](https://doc.rust-lang.org/stable/std/default/"
+"trait.Default.html) documentation (scroll down for the list of implementors)"
 msgstr ""
 
 #: src/idioms/default.md:63

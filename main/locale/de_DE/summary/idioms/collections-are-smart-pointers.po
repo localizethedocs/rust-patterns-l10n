@@ -126,6 +126,6 @@ msgstr ""
 
 #: src/idioms/deref.md:79
 msgid ""
-"[Documentation for `Deref` trait](https://doc.rust-lang.org/std/ops/trait."
-"Deref.html)."
+"[Documentation for `Deref` trait](https://doc.rust-lang.org/std/ops/"
+"trait.Deref.html)."
 msgstr ""

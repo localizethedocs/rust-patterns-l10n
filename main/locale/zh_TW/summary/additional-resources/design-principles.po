@@ -56,14 +56,14 @@ msgstr ""
 #: src/additional_resources/design-principles.md:22
 msgid ""
 "[Dependency Inversion Principle (DIP)](https://en.wikipedia.org/wiki/"
-"Dependency_inversion_principle): One should \"depend upon abstractions, "
-"\\[not\\] concretions.\""
+"Dependency_inversion_principle): One should \"depend upon abstractions, \\"
+"[not\\] concretions.\""
 msgstr ""
 
 #: src/additional_resources/design-principles.md:25
 msgid ""
-"[CRP (Composite Reuse Principle) or Composition over inheritance](https://en."
-"wikipedia.org/wiki/Composition_over_inheritance)"
+"[CRP (Composite Reuse Principle) or Composition over inheritance](https://"
+"en.wikipedia.org/wiki/Composition_over_inheritance)"
 msgstr ""
 
 #: src/additional_resources/design-principles.md:27
